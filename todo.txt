@@ -1,0 +1,4 @@
+install sparti media library for 
+set up basics settings 
+set up about us text and vidoe dynimcaly
+set up docters and nurse adding
