@@ -23,6 +23,7 @@ class CreateNursesTable extends Migration
             $table->string("qualification");
             $table->string("photo_path");
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

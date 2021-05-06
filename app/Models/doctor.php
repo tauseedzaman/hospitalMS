@@ -6,17 +6,17 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class nurse extends Model
+class doctor extends Model
 {
     use HasFactory,SoftDeletes;
     protected $fillable=[
         'name',
         'email',
-        'phone',
-        'gender',
+        'password',
         'address',
-        'qualification',
+        'phone',
+        'department',
+        'specialization',
         'photo_path',
     ];
-
 }
