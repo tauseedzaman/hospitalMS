@@ -1,5 +1,5 @@
 @extends('admins.layouts.app')
 
 @section('admin_content')
-@livewire('birthreport')
+@livewire('admins.birthreport')
 @endsection

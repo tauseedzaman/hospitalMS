@@ -15,10 +15,12 @@ class CreateOperationreportsTable extends Migration
     {
         Schema::create('operationreports', function (Blueprint $table) {
             $table->id();
-            $table->foreignId("patients_id");
+            $table->string("patient");
             $table->text("description");
-            $table->foreignId("docters_id");
+            $table->string("doctor");
+            $table->string("time");
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

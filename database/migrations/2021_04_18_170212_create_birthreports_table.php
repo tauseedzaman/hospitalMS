@@ -15,10 +15,11 @@ class CreateBirthreportsTable extends Migration
     {
         Schema::create('birthreports', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('patients_id');
-            $table->text("description");
-            $table->foreignId("docters_id");
+            $table->string('patient')->constrained();
+            $table->string("description");
+            $table->string("doctor")->constrained();
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 
