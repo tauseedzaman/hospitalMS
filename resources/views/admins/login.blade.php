@@ -1,7 +1,6 @@
-@extends('layouts.app')
+@extends('admins.layouts.gest')
 
-@section('content')
-<br><br><br><br><br><br><br><br><br><br>
+@section('admin_gest_content')
 <div class="container mt-5">
     <h1 class="text-success p-3 text-center ">{{ env('APP_NAME') }}</h1>
     <div class="row justify-content-center">
@@ -10,7 +9,7 @@
                 <div class="card-header">{{ __('Login') }}</div>
 
                 <div class="card-body">
-                    <form method="POST" class="py-3" action="{{ route('login') }}">
+                    <form method="POST" class="py-3" action="{{ route('admin_login') }}">
                         @csrf
 
                         <div class="form-group row">

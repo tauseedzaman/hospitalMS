@@ -13,19 +13,7 @@ use App\Http\Controllers\NurseController;
 use App\Http\Controllers\OperationreportController;
 use App\Http\Controllers\PatientController;
 use App\Http\Controllers\RoomsController;
-use App\Models\admin;
 use Illuminate\Support\Facades\Route;
-
-/*
-|--------------------------------------------------------------------------
-|--------------------------------------------------------------------------
-| Web Routes
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
 
 Route::get('/', function () {
     return view('index');
@@ -44,12 +32,15 @@ Route::get('/app', function () {
     return view('layouts.app');
 });
 
+Route::middleware(['auth','checksuperadmin'])->group(function () {
+    Route::get('/admins/',[AdminController::class,'index'])->name("admins");
+    Route::post('/admins/login',[AdminController::class,'authenticate_admin'])->name("admin_login");
+    Route::get('/admin/settings', [GeneralSettingsController::class,'index'])->name('admin_settings');
+    Route::get('/admin/nurses',[NurseController::class,'index'])->name('nurses');
+    Route::get('/admin/docters',[DocterController::class,'index'])->name('admin_docters');
+});
+
 //admins operations
-Route::get('/admins/',[AdminController::class,'index'])->name("admins");
-
-Route::get('/admin/settings', [GeneralSettingsController::class,'index'])->name('admin_settings');
-
-Route::get('/admin/docters',[DocterController::class,'index'])->name('admin_docters');
 
 Route::get('/admin/operationsreport',[OperationreportController::class,'index'])->name('admin_operations_report');
 
@@ -61,13 +52,12 @@ Route::get('/admin/patientBills',[BillController::class,'index'])->name('patient
 
 Route::view('admins/test','test');
 
-Route::get('/admin/rooms',[RoomsController::class,'index'])->name('rooms');
+Route::get('/admin/rooms',[RoomsController::class,'index'])->name('Rooms');
 
 Route::get('/admin/beds',[BedsController::class,'index'])->name('patients_beds');
 
 Route::get('/admin/medicinesStore', [MedicinController::class,'index'])->name('medicinesStore');
 
-Route::get('/admin/nurses',[NurseController::class,'index'])->name('nurses');
 
 Route::get('/admin/departments',[DepartmentController::class,'index'])->name('departments');
 

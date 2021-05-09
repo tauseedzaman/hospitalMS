@@ -6,14 +6,11 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class beds extends Model
+class createbeds extends Model
 {
     use HasFactory,SoftDeletes;
     protected $fillable=[
-        'room_id',
-        'patient_id',
-        'alloted_time',
-        'discharge_time',
+        'room_id'
     ];
 
     public function room()

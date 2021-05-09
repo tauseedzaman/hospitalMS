@@ -1,4 +1,8 @@
-install sparti media library for 
-set up basics settings 
-set up about us text and vidoe dynimcaly
-set up docters and nurse adding
+roles:
+    doctors{ can check patient reports and checkups}
+    admin{ can check departments, rooms beds}
+    super_admin{ has full control of the site, i.e creating employee,doctor nurse, etc}
+    PA {can check outdoor patient checkup}
+    store man {has full control on medicines }
+    accounttant {bills calculation}
+

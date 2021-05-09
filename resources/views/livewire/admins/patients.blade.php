@@ -66,39 +66,64 @@
                         </select>
                         @error('Gender') <span class="text-red-500 text-danger text-xs">{{ $message }}</span> @enderror
                     </div>
-                    <div class="form-group"  x-data="{ isUploading: false, progress: 0 }" x-on:livewire-upload-start="isUploading = true" x-on:livewire-upload-finish="isUploading = false" x-on:livewire-upload-error="isUploading = false"  x-on:livewire-upload-progress="progress = $event.detail.progress">
-                            <label class="form-control-label">Photo</label>
-                            <div class="custom-file">
-                                <input type="file" name="Photo" wire:model.lazy="photo" class="custom-file-input ">
-                                <label class="custom-file-label">{{ __('Choose Photo') }}</label>
+                    <div class="form-group ">
+                        <label class="form-check-label mr-3">
+                            Patient Type
+                            </label><br>
+                        <div class="form-inline">
+                            <div class="form-check mx-3">
+                                <input class="form-check-input" wire:model="indoor" type="radio" name="rad" id="rad1" value="indoor">
+                                <label class="form-check-label" for="rad1">
+                                Indoor
+                                </label>
                             </div>
-                            @error('photo') <span class="text-red-500 text-danger text-xs">{{ $message }}</span> @enderror <br>
-
-                            <div x-show="isUploading" style="width: 100%">
-                                <progress class="my-1 progress-bar" role="progressbar" max="100" x-bind:value="progress"></progress>
+                            <div class="form-check mx-3">
+                                <input class="form-check-input" wire:model="outdoor" type="radio" name="rad" id="rad2" value="outdoor">
+                                <label class="form-check-label" for="rad2">
+                                    Outdoor
+                                </label>
                             </div>
-                            <small class="text-muted">{{ __('The photo must have 0x0 size') }}</small><br>
-                            <br>
-                            <div wire:loading wire:target="photo">{{ __('Uploading...') }}</div><br>
-
-                            @if ($photo)
-                            {{ __('Photo Preview:') }}<br>
-                                <img width="20%" height="20%" src="{{ $photo->temporaryUrl() }}">
-                            @endif
-                            @if ($edit_photo)
-                            <br>
-                            {{ __('Old Photo Preview:') }}<br>
-                                <img width="20%" height="20%" src="{{ env('APP_URL').'storage/'.$edit_photo }}">
-                            @endif
-
-
                         </div>
+                    </div>
+                    @if ($indoor)
+                    <h1>out door is on</h1>
+                    @endif
+                    @if ($indoor)
+                    <div class="form-group"  x-data="{ isUploading: false, progress: 0 }" x-on:livewire-upload-start="isUploading = true" x-on:livewire-upload-finish="isUploading = false" x-on:livewire-upload-error="isUploading = false"  x-on:livewire-upload-progress="progress = $event.detail.progress">
+                        <label class="form-control-label">Photo</label>
+                        <div class="custom-file">
+                            <input type="file" name="Photo" wire:model.lazy="photo" class="custom-file-input ">
+                            <label class="custom-file-label">{{ __('Choose Photo') }}</label>
+                        </div>
+                        @error('photo') <span class="text-red-500 text-danger text-xs">{{ $message }}</span> @enderror <br>
+
+                        <div x-show="isUploading" style="width: 100%">
+                            <progress class="my-1 progress-bar" role="progressbar" max="100" x-bind:value="progress"></progress>
+                        </div>
+                        <small class="text-muted">{{ __('The photo must have 0x0 size') }}</small><br>
+                        <br>
+                        <div wire:loading wire:target="photo">{{ __('Uploading...') }}</div><br>
+
+                        @if ($photo)
+                        {{ __('Photo Preview:') }}<br>
+                            <img width="20%" height="20%" src="{{ $photo->temporaryUrl() }}">
+                        @endif
+                        @if ($edit_photo)
+                        <br>
+                        {{ __('Old Photo Preview:') }}<br>
+                            <img width="20%" height="20%" src="{{ env('APP_URL').'storage/'.$edit_photo }}">
+                        @endif
+
+
+                    </div>
+                    @endif
+
                         <div class="form-group">
                             <input type="submit" class="btn btn-primary" value="{{ $button_text }}">
                         </div>
                     </form><br><hr>
                     <div class="text-capitalize bg-dark p-2 shadow mb-3 text-center text-lg text-light rounded" >{{ _("All  patients") }}</div>
-                    <table width="100%" class="table table-hover" id="">
+                    <table width="100%" class="table table-hover"   id="">
                         <thead>
                             <tr>
                                 <th>Name</th>

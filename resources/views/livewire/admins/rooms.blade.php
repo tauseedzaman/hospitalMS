@@ -1,99 +1,76 @@
-
-<div class="content">
-    <div class="container">
-        <div class="page-title">
-            <h3 class="text-info">Rooms
-                <button class="btn btn-sm btn-outline-primary float-right" onclick="show_modal()">Add Rooms</button>
-            </h3>
-        </div>
-        <div class="box box-primary">
-            <div class="box-body">
-                <table width="100%" class="table table-hover" id="dataTables-example">
-                    <thead>
-                        <tr>
-                            <th>Bed No</th>
-                            <th>Department</th>
-                            <th>Dated</th>
-                            <th>Actions</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>433</td>
-                            <td>zaman</td>
-                            <td>2/5/2021</td>
-                            <td class="text-right">
-                                <button class="btn btn-outline-info btn-rounded"><i class="fas fa-pen"></i></button>
-                                <button class="btn btn-outline-danger btn-rounded"><i class="fas fa-trash"></i></button>
-                            </td>
-                        </tr> <tr>
-                            <td>433</td>
-                            <td>zaman</td>
-                            <td>2/5/2021</td>
-                            <td class="text-right">
-                                <button class="btn btn-outline-info btn-rounded"><i class="fas fa-pen"></i></button>
-                                <button class="btn btn-outline-danger btn-rounded"><i class="fas fa-trash"></i></button>
-                            </td>
-                        </tr> <tr>
-                            <td>433</td>
-                            <td>zaman</td>
-                            <td>2/5/2021</td>
-                            <td class="text-right">
-                                <button class="btn btn-outline-info btn-rounded"><i class="fas fa-pen"></i></button>
-                                <button class="btn btn-outline-danger btn-rounded"><i class="fas fa-trash"></i></button>
-                            </td>
-                        </tr> <tr>
-                            <td>433</td>
-                            <td>zaman</td>
-                            <td>2/5/2021</td>
-                            <td class="text-right">
-                                <button class="btn btn-outline-info btn-rounded"><i class="fas fa-pen"></i></button>
-                                <button class="btn btn-outline-danger btn-rounded"><i class="fas fa-trash"></i></button>
-                            </td>
-                        </tr> <tr>
-                            <td>433</td>
-                            <td>zaman</td>
-                            <td>2/5/2021</td>
-                            <td class="text-right">
-                                <button class="btn btn-outline-info btn-rounded"><i class="fas fa-pen"></i></button>
-                                <button class="btn btn-outline-danger btn-rounded"><i class="fas fa-trash"></i></button>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
+<div>
+    <div class="content">
+        <div class="container">
+            <div class="page-title">
+                <h3 class="text-info">{{ env('APP_NAME') }}  Rooms</h3>
             </div>
- </div>
- <div class="modal" id="add_operation_report">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header bg-light">
-                <div class="text-capitalize">Add Room</div>
+            <div  >
+                @if (session()->has('message'))
+                <div class="alert alert-success"  >
+                    {{ session('message') }}
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                      </button>
+                </div>
+                @endif
             </div>
-            <div class="modal-body">
-                <form accept-charset="utf-8">
+            <div class="box box-primary" >
+                <div class="box-body">
+                    <div class="text-info" wire:loading>Loading..</div>
+                    <form accept-charset="utf-8" class="shadow rounded p-3" wire:submit.prevent="add_room()">
+                    <div class="text-capitalize bg-dark p-2 shadow mb-3 text-center text-lg text-light rounded" >{{ __("Add New room") }}</div>
                     <div class="form-group">
-                        <label for="Department">Department</label>
-                        <select name="Department" class="form-control" required>
-                            <option value="" selected>Choose Department</option>
-                            <option value="1">Department-1</option>
-                            <option value="2">Department-2</option>
-                            <option value="3">Department-3</option>
+                        <label for="department">Department</label>
+                        <select name="department" wire:model.lazy="department" class="form-control" required>
+                            <option selected>Choose Department</option>
+                            @forelse ($departments as $department)
+                                <option value="{{ $department->id }}">{{ $department->name }}</option>
+                            @empty
+                                <option value="">Null</option>
+                            @endforelse
                         </select>
-                    </div>
-                    <div class="modal-footer">
-                        <input type="submit" class="btn btn-block btn-primary" value="Add">
-                    </div>
-                </form>
-            </div>
-        </div>
-    </div>
- </div>
 
- <script>
-     function show_modal(){
-         $("#add_operation_report").modal("show");
-     }
-     function hide_modal(){
-         $("#add_operation_report").modal("hide");
-     }
- </script>
+                        @error('department') <span class="text-red-500 text-danger text-xs">{{ $message }}</span> @enderror
+                    </div>
+                        <div class="form-group">
+                            <input type="submit" class="btn btn-primary" value="{{ $button_text }}">
+                        </div>
+                    </form><br><hr>
+
+                    <div class="text-capitalize bg-dark p-2 shadow mb-3 text-center text-lg text-light rounded" >{{ _("All  rooms") }}</div>
+                    <table  class="table table-hover"  style="" id="">
+                        <thead>
+                            <tr>
+                                <th>Room No</th>
+                                <th>Department</th>
+                                <th>Department Photo</th>
+                                <th>Dated</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @forelse ($rooms as $room)
+                                <tr>
+                                    <td>{{ $room->id }}</td>
+                                    <td>{{ $room->department->name }}</td>
+                                    <td><img width="40px" height="40px" src="{{ env('APP_URL').'storage/'.$room->department->photo_path }}" alt="department image"></td>
+                                    <td>{{ $room->created_at }}</td>
+                                    <td class="text-right">
+                                        <button wire:click="edit({{ $room->id }})" class="btn btn-outline-info btn-rounded"><i class="fas fa-pen"></i></button>
+                                        <button wire:click="delete({{ $room->id }})" onclick="return confirm('{{ __('Are You Sure ?')  }}')" class="btn btn-outline-danger btn-rounded"><i class="fas fa-trash"></i></button>
+                                    </td>
+                                </tr>
+                            @empty
+                            <td class="text-warning">{{ __('Null') }}</td>
+                            <td class="text-warning">{{ __('Null') }}</td>
+                            <td class="text-warning">{{ __('Null') }}</td>
+                            <td class="text-warning">{{ __('Null') }}</td>
+                            <td class="text-warning">{{ __('Null') }}</td>
+                            <td class="text-warning">{{ __('Null') }}</td>
+                        </tr>
+                            @endforelse
+                            </tbody>
+                    </table>
+                </div>
+     </div>
+</div>

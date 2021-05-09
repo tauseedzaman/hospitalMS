@@ -20,13 +20,22 @@ class Patients extends Component
     public $address;
     public $bloodgroup;
     public $photo;
+    public $indoor;
+    public $outdoor;
 
     public $edit_photo;
     public $edit_patient_id;
     public $button_text = "Add New Patient";
 
+    public function updatingIndoor($value)
+    {
+        return view('livewire.admins.patients');
 
-
+    }
+    public function updatingOutdoor($value)
+    {
+        return view('livewire.admins.patients');
+    }
     public function add_patient()
     {
         if ($this->edit_patient_id) {

@@ -20,9 +20,10 @@ class CreateEmployeesTable extends Migration
             $table->string("phone");
             $table->string("address");
             $table->string("gender");
-            $table->string("jobe");
+            $table->string("job");
             $table->string("salary");
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

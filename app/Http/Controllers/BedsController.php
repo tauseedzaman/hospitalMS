@@ -8,6 +8,6 @@ class BedsController extends Controller
 {
     public function index()
     {
-        dd("hi");
+        return view('admins.beds');
     }
 }
