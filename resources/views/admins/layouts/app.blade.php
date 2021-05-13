@@ -1,4 +1,5 @@
 <!doctype html>
+
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 
 <head>
@@ -110,7 +111,7 @@
                       </li>
                       <li class="nav-item dropdown">
                           <div class="nav-dropdown">
-                              <a href="" class="nav-item nav-link dropdown-toggle text-secondary" data-toggle="dropdown"><i class="fas fa-user"></i> <span>{{ auth()->user()->name }}</span> <i style="font-size: .8em;" class="fas fa-caret-down"></i></a>
+                              <a href="" class="nav-item nav-link dropdown-toggle text-secondary" data-toggle="dropdown"><i class="fas fa-user"></i> <span>{{ auth()->user()->name ?? '' }}</span> <i style="font-size: .8em;" class="fas fa-caret-down"></i></a>
                               <div class="dropdown-menu dropdown-menu-right nav-link-menu">
                                   <ul class="nav-list">
                                       <li><a href="" class="dropdown-item"><i class="fas fa-address-card"></i> Profile</a></li>

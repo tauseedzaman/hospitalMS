@@ -19,11 +19,13 @@ class CreateGeneralSettingsTable extends Migration
             $table->text('description');
             $table->string('logo_path');
             $table->string('favicon_path');
+            $table->string('icon_logo_path');
             $table->string('business_phone');
             $table->string('business_email');
-            $table->string('working-hourse');
+            $table->string('working_horse');
             $table->string('address');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

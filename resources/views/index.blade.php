@@ -34,7 +34,7 @@
       <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
          <div class="row">
             <div class="service-time middle" style="background:#0071d1;">
-               <span class="info-icon"><i class="fa fa-clock-o" aria-hidden="true"></i></span> 
+               <span class="info-icon"><i class="fa fa-clock-o" aria-hidden="true"></i></span>
                <h3>Working Hours</h3>
                <div class="time-table-section">
                   <ul>
@@ -563,7 +563,7 @@
                   </div>
                </div>
                <div class="col-md-12">
-                  <div class="form-group in_message"> 
+                  <div class="form-group in_message">
                      <textarea class="form-control" id="message" rows="5" placeholder="Message" required="required"></textarea>
                   </div>
                   <div class="actions">
@@ -576,74 +576,5 @@
       <div id="googleMap" style="width:100%;height:450px;"></div>
    </div>
 </div>
-<footer id="footer" class="footer-area wow fadeIn">
-   <div class="container">
-      <div class="row">
-         <div class="col-md-4">
-            <div class="logo padding">
-               <a href=""><img src="images/logo.png" alt=""></a>
-               <p>Locavore pork belly scen ester pine est chill wave microdosing pop uple itarian cliche artisan.</p>
-            </div>
-         </div>
-         <div class="col-md-4">
-            <div class="footer-info padding">
-               <h3>CONTACT US</h3>
-               <p><i class="fa fa-map-marker" aria-hidden="true"></i> PO Box 16122 Collins Street West Victoria 8007 Australia</p>
-               <p><i class="fa fa-paper-plane" aria-hidden="true"></i> info@gmail.com</p>
-               <p><i class="fa fa-phone" aria-hidden="true"></i> (+1) 800 123 456</p>
-            </div>
-         </div>
-         <div class="col-md-4">
-            <div class="subcriber-info">
-               <h3>SUBSCRIBE</h3>
-               <p>Get healthy news, tip and solutions to your problems from our experts.</p>
-               <div class="subcriber-box">
-                  <form id="mc-form" class="mc-form">
-                     <div class="newsletter-form">
-                        <input type="email" autocomplete="off" id="mc-email" placeholder="Email address" class="form-control" name="EMAIL">
-                        <button class="mc-submit" type="submit"><i class="fa fa-paper-plane"></i></button> 
-                        <div class="clearfix"></div>
-                        <!-- mailchimp-alerts Start -->
-                        <div class="mailchimp-alerts">
-                           <div class="mailchimp-submitting"></div>
-                           <!-- mailchimp-submitting end -->
-                           <div class="mailchimp-success"></div>
-                           <!-- mailchimp-success end -->
-                           <div class="mailchimp-error"></div>
-                           <!-- mailchimp-error end -->
-                        </div>
-                        <!-- mailchimp-alerts end -->
-                     </div>
-                  </form>
-               </div>
-            </div>
-         </div>
-      </div>
-   </div>
-</footer>
-<div class="copyright-area wow fadeIn">
-   <div class="container">
-      <div class="row">
-         <div class="col-md-8">
-            <div class="footer-text">
-               <p>© 2018. Distributed by <a id="tw" href="https://themewagon.com/" target="_blank">ThemeWagon</a></p>
-            </div>
-         </div>
-         <div class="col-md-4">
-            <div class="social">
-               <ul class="social-links">
-                  <li><a href=""><i class="fa fa-rss"></i></a></li>
-                  <li><a href=""><i class="fa fa-facebook"></i></a></li>
-                  <li><a href=""><i class="fa fa-twitter"></i></a></li>
-                  <li><a href=""><i class="fa fa-google-plus"></i></a></li>
-                  <li><a href=""><i class="fa fa-youtube"></i></a></li>
-                  <li><a href=""><i class="fa fa-pinterest"></i></a></li>
-               </ul>
-            </div>
-         </div>
-      </div>
-   </div>
-</div>
-<!-- end copyrights -->
 
 @endsection

@@ -32,13 +32,13 @@ Route::get('/app', function () {
     return view('layouts.app');
 });
 
-Route::middleware(['auth','checksuperadmin'])->group(function () {
+// Route::middleware(['auth','checksuperadmin'])->group(function () {
     Route::get('/admins/',[AdminController::class,'index'])->name("admins");
     Route::post('/admins/login',[AdminController::class,'authenticate_admin'])->name("admin_login");
     Route::get('/admin/settings', [GeneralSettingsController::class,'index'])->name('admin_settings');
     Route::get('/admin/nurses',[NurseController::class,'index'])->name('nurses');
     Route::get('/admin/docters',[DocterController::class,'index'])->name('admin_docters');
-});
+// });
 
 //admins operations
 
