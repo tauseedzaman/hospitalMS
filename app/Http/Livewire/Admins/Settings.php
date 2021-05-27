@@ -186,6 +186,6 @@ class Settings extends Component
         //  $this->business_email  = $general_settings->business_email;
         //  $this->business_phone  = $general_settings->business_phone;
 
-        return view('livewire.admins.settings');
+        return view('livewire.admins.settings')->layout('admins.layouts.app');
     }
 }

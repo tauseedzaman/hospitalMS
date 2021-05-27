@@ -107,6 +107,6 @@ class Departments extends Component
 
         return view('livewire.admins.departments',[
             'departments' => department::all(),
-        ]);
+        ])->layout('admins.layouts.app');
     }
 }

@@ -77,6 +77,6 @@ class Rooms extends Component
         return view('livewire.admins.rooms',[
             'rooms' =>ModelsRooms::all(),
             'departments' =>department::all()
-        ]);
+        ])->layout('admins.layouts.app');
     }
 }
