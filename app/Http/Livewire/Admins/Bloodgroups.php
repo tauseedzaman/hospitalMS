@@ -8,6 +8,6 @@ class Bloodgroups extends Component
 {
     public function render()
     {
-        return view('livewire.admins.bloodgroups');
+        return view('livewire.admins.bloodgroups')->layout('admins.layouts.app');
     }
 }

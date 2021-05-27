@@ -23,7 +23,7 @@ class doctorSeeder extends Seeder
                 'phone'         => "+92123456789",
                 'department'         => "Department ".rand(1,5),
                 'specialization'         => "'.$i+1.'MBBS '.$i.'",
-                'photo_path'    => 'doctor.jpg',
+                'photo_path'    => 'doctor_01.jpg',
             ]);
         }
     }

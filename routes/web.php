@@ -1,18 +1,6 @@
 <?php
 
 use App\Http\Controllers\AdminController;
-// use App\Http\Controllers\BedsController;
-// use App\Http\Controllers\BillController;
-// use App\Http\Controllers\BirthreportController;
-// use App\Http\Controllers\DepartmentController;
-// use App\Http\Controllers\DocterController;
-// use App\Http\Controllers\EmployeeController;
-// use App\Http\Controllers\GeneralSettingsController;
-// use App\Http\Controllers\MedicinController;
-// use App\Http\Controllers\NurseController;
-// use App\Http\Controllers\OperationreportController;
-// use App\Http\Controllers\PatientController;
-// use App\Http\Controllers\RoomsController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -31,11 +19,14 @@ Route::get("/docters",function ()
 Route::get('/app', function () {
     return view('layouts.app');
 });
+
+Route::view('/services', 'services');
+
 Route::get('/admin/',[AdminController::class,'index'])->name("admins");
 
 Route::post('/admin/login',[AdminController::class,'authenticate_admin'])->name("admin_login");
 
-// Route::middleware(['auth','checksuperadmin'])->group(function () {
+// Route::middleware(['auth'])->group(function () {
 
     Route::get('/admin/settings',\App\Http\Livewire\Admins\Settings::class)->name('admin_settings');
 
@@ -51,14 +42,11 @@ Route::post('/admin/login',[AdminController::class,'authenticate_admin'])->name(
 
     Route::get('/admin/patientBills',\App\Http\Livewire\Admins\Bills::class)->name('patient_bills');
 
-    Route::view('admins/test','test');
-
     Route::get('/admin/rooms',\App\Http\Livewire\Admins\Rooms::class)->name('Rooms');
 
     Route::get('/admin/beds',\App\Http\Livewire\Admins\Beds::class)->name('patients_beds');
 
     Route::get('/admin/medicinesStore',\App\Http\Livewire\Admins\Medicinestore::class)->name('medicinesStore');
-
 
     Route::get('/admin/departments',\App\Http\Livewire\Admins\departments::class)->name('departments');
 

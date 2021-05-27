@@ -105,6 +105,6 @@ class Beds extends Component
             'rooms' => rooms::all(),
             'beds' => ModelsBeds::where('room_id',$this->room)
 
-        ]);
+        ])->layout('admins.layouts.app');
     }
 }

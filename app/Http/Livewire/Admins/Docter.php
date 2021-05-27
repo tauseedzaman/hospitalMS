@@ -159,6 +159,6 @@ class Docter extends Component
         return view('livewire.admins.docter',[
             'departments'=>department::all(),
             'doctors'=>doctor::all(),
-        ]);
+        ])->layout('admins.layouts.app');
     }
 }

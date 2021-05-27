@@ -8,6 +8,6 @@ class Medicinestore extends Component
 {
     public function render()
     {
-        return view('livewire.admins.medicinestore');
+        return view('livewire.admins.medicinestore')->layout('admins.layouts.app');
     }
 }

@@ -1,7 +1,4 @@
 @extends('admins.layouts.app')
-
 @section('admin_content')
-
-    @livewire("admins.departments")
-
+@livewire('admins.departments')
 @endsection

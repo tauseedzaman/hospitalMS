@@ -103,6 +103,6 @@ class Birthreport extends Component
             'BirthReports' => ModelsBirthreport::all(),
             'doctors' => doctor::all(),
             'patients' => patient::all(),
-        ]);
+        ])->layout('admins.layouts.app');
     }
 }

@@ -134,6 +134,6 @@ class Employees extends Component
     {
         return view('livewire.admins.employees',[
             'employees' => employee::all(),
-        ]);
+        ])->layout('admins.layouts.app');
     }
 }

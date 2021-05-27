@@ -165,6 +165,6 @@ class Patients extends Component
     {
         return view('livewire.admins.patients',[
             'patients' => patient::all(),
-        ]);
+        ])->layout('admins.layouts.app');
     }
 }

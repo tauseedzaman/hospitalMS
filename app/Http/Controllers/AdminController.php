@@ -22,7 +22,7 @@ class AdminController extends Controller
         $credentials = $request->only('email', 'password');
 
         if (Auth::attempt($credentials)) {
-            return redirect()->intended('admins/');
+            return redirect()->intended('admin/');
         }
 
         return redirect('login')->with('error', 'Oppes! You have entered invalid credentials');

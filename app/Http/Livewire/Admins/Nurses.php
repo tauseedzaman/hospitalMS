@@ -146,6 +146,6 @@ class Nurses extends Component
     {
         return view('livewire.admins.nurses',[
             'nurses' =>nurse::all(),
-        ]);
+        ])->layout('admins.layouts.app');
     }
 }

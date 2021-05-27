@@ -114,6 +114,6 @@ class Operationreport extends Component
             'OperationReports' => ModelsOperationreport::all(),
             'doctors' => doctor::all(),
             'patients' => patient::all(),
-        ]);
+        ])->layout('admins.layouts.app');
     }
 }

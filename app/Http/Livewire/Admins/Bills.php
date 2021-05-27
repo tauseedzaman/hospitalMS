@@ -8,6 +8,6 @@ class Bills extends Component
 {
     public function render()
     {
-        return view('livewire.admins.bills');
+        return view('livewire.admins.bills')->layout('admins.layouts.app');
     }
 }
