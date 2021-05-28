@@ -10,10 +10,11 @@ class patientSeeder extends Seeder
     /**
      * Run the database seeds.
      *
-     * @return void
+    * @return void
      */
     public function run()
     {
+        $groups = ['A+','A-','B+','B-','AB'];
         for ($i=0; $i <20 ; $i++) {
             patient::create([
                 'name'          => 'tauseed'.$i.' zamana',
@@ -22,7 +23,7 @@ class patientSeeder extends Seeder
                 'gender'        => "Female",
                 'address'       => 'sorana'.$i.'',
                 'age'       => rand(1,130),
-                'bloodgroup' => 'A-',
+                'bloodgroup' => $groups[rand(0,4)],
                 'photo_path'    => 'null',
             ]);
         }

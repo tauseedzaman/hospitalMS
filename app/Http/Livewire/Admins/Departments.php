@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire\Admins;
 use App\Models\department;
+use App\Models\employee;
 use Livewire\Component;
 use Illuminate\Support\Facades\Storage;
 use Intervention\Image\ImageManagerStatic;
@@ -12,6 +13,7 @@ class Departments extends Component
 {
     use WithFileUploads;
     public $name;
+    public $head;
     public $descriptions;
     public $photo;
     public $edit_photo;
@@ -29,16 +31,19 @@ class Departments extends Component
             $this->validate([
                 'name' => 'required|max:50',
                 'descriptions' => 'required|max:255',
+                'head' => 'required',
                 'photo' => 'required|image|max:3072', //3MB
                 ]);
             department::create([
                 'name'        => $this->name,
                 'description' => $this->descriptions,
+                'employee_id' => $this->head,
                 'photo_path'  => $this->storeImage(),
             ]);
             $this->name="";
             $this->descriptions="";
             $this->photo="";
+            $this->head="";
             session()->flash('message', 'Department Created successfully.');
         }
 
@@ -53,7 +58,7 @@ class Departments extends Component
         $img = $imag->resize(320, 240);
         $name  = Str::random() . '.jpg';
         Storage::disk('public')->put($name, $img);
-        return $name;
+        return env('APP_URL').'storage/'.$name;
     }
 
      public function edit($id)
@@ -62,6 +67,7 @@ class Departments extends Component
         $this->edit_department_id = $id;
         $this->name = $department->name;
         $this->descriptions = $department->description;
+        $this->head = $department->employee_id;
         $this->edit_photo = $department->photo_path;
         $this->button_text="Update Department";
     }
@@ -70,11 +76,13 @@ class Departments extends Component
         $this->validate([
             'name' => 'required|max:50',
             'descriptions' => 'required|max:255',
+            'head' => 'required',
             ]);
 
         $department = department::findOrFail($id);
         $department->name = $this->name;
         $department->description = $this->descriptions;
+        $department->employee_id = $this->head;
         if ($this->photo) {
             $this->validate([
                 'photo' => 'image|max:3072',
@@ -87,6 +95,7 @@ class Departments extends Component
         $this->name="";
         $this->descriptions="";
         $this->edit_photo="";
+        $this->head="";
         $this->photo="";
         session()->flash('message', 'Department Updated Successfully.');
         $this->button_text = "Add New Department";
@@ -107,6 +116,7 @@ class Departments extends Component
 
         return view('livewire.admins.departments',[
             'departments' => department::all(),
+            'employees' => employee::all(),
         ])->layout('admins.layouts.app');
     }
 }

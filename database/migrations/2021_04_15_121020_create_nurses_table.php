@@ -21,6 +21,8 @@ class CreateNursesTable extends Migration
             $table->string("gender");
             $table->string("address");
             $table->string("qualification");
+            $table->string("position");
+            $table->boolean('registered');
             $table->string("photo_path");
             $table->timestamps();
             $table->softDeletes();

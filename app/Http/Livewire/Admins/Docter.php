@@ -79,7 +79,7 @@ class Docter extends Component
         $imag   = ImageManagerStatic::make($this->Photo)->encode('jpg');
         $name  = Str::random() . '.jpg';
         Storage::disk('public')->put($name, $imag);
-        return $name;
+        return env('APP_URL').'storage/'. $name;
     }
 
      public function edit($id)

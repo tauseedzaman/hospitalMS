@@ -19,6 +19,8 @@ class Nurses extends Component
     public $address;
     public $qualification;
     public $photo;
+    public $position;
+    public $registered;
 
     public $edit_photo;
     public $edit_nurse_id;
@@ -36,6 +38,8 @@ class Nurses extends Component
             $this->validate([
                 'name' => 'required||min:6|max:50',
                 'email' => 'required|email',
+                'position' => 'required',
+                'registered' => 'required',
                 'address' => 'required',
                 'phone' => 'required|numeric',
                 'gender' => 'required',
@@ -51,6 +55,8 @@ class Nurses extends Component
                 'address'       => $this->address,
                 'qualification' => $this->qualification,
                 'photo_path'    =>$this->storeImage(),
+                'position'    =>$this->position,
+                'registered'    =>$this->registered,
             ]);
             //unset variables
             $this->name="";
@@ -61,6 +67,8 @@ class Nurses extends Component
             $this->qualification="";
             $this->address="";
             $this->photo="";
+            $this->position="";
+            $this->registered="";
             session()->flash('message', 'Nurse Created successfully.');
         }
 
@@ -89,6 +97,7 @@ class Nurses extends Component
         $this->phone = $nurse->phone;
         $this->qualification = $nurse->qualification;
         $this->edit_photo = $nurse->photo_path;
+        $this->position = $nurse->position;
 
         $this->button_text="Update nurse";
     }
@@ -99,6 +108,8 @@ class Nurses extends Component
                 'email' => 'required|email',
                 'address' => 'required',
                 'phone' => 'required',
+                'position' => 'required',
+                'registered' => 'required',
             ]);
 
         $nurse = nurse::findOrFail($id);
@@ -106,6 +117,8 @@ class Nurses extends Component
         $nurse->email = $this->email;
         $nurse->address = $this->address;
         $nurse->phone = $this->phone;
+        $nurse->position = $this->position;
+        $nurse->registered = $this->registered;
 
         if ($this->photo) {
             $this->validate([
@@ -126,6 +139,8 @@ class Nurses extends Component
         $this->address="";
         $this->photo="";
         $this->edit_photo="";
+        $this->registered="";
+        $this->position="";
 
         session()->flash('message', 'Nurse Updated Successfully.');
 

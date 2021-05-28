@@ -26,7 +26,7 @@ Route::get('/admin/',[AdminController::class,'index'])->name("admins");
 
 Route::post('/admin/login',[AdminController::class,'authenticate_admin'])->name("admin_login");
 
-// Route::middleware(['auth'])->group(function () {
+// Route::middleware(['auth','checksuperadmin'])->group(function () {
 
     Route::get('/admin/settings',\App\Http\Livewire\Admins\Settings::class)->name('admin_settings');
 

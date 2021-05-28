@@ -17,6 +17,8 @@ class nurse extends Model
         'address',
         'qualification',
         'photo_path',
+        'registered',
+        'position',
     ];
 
 }

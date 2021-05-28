@@ -23,7 +23,7 @@
 </head>
 
 <body class="clinic_version">
-    @auth
+    {{-- @auth
         <div class="wrapper">
             <nav id="sidebar" class="active mt-4">
                 <ul class="mt-5 list-unstyled components text-secondary">
@@ -137,7 +137,7 @@
             </nav>
         </div>
     </div>
-    @endauth
+    @endauth --}}
             <br><br><br>
 
             @yield('admin_gest_content')

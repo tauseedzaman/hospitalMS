@@ -13,6 +13,7 @@ class department extends Model
         'name',
         'description',
         'photo_path',
+        'employee_id', //head of department
     ];
 
     public function rooms()

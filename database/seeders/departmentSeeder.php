@@ -19,7 +19,8 @@ class departmentSeeder extends Seeder
             department::create([
                 'name'          => 'Department '.$i.'',
                 'description'   => "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Porro, provident'.$i.'. ",
-                'photo_path'    => 'department.jpg',
+                'photo_path'    => env('APP_URL').'images/department.jpg',
+                'employee_id'    => rand(1,5),
             ]);
     }
 }

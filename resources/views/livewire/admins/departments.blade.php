@@ -38,21 +38,34 @@
                         <div x-show="isUploading" style="width: 100%">
                             <progress class="progress-bar" role="progressbar" max="100" aria-valuenow="progress" x-bind:value="progress"></progress>
                         </div>
-                        <small class="text-muted">The photo must have 0x0 size</small><br>
+                        <small class="text-muted">The photo must have 0x0 size</small>
                         @if ($photo)
-                        Photo Preview:<br>
+                        <br>Photo Preview:<br>
                             <img width="20%" height="20%" src="{{ $photo->temporaryUrl() }}">
                         @endif
                         @if ($edit_photo)
-                        <br>
-                        Old Photo Preview:<br>
+                        <br>Old Photo Preview:<br>
                             <img width="20%" height="20%" src="{{ env('APP_URL').'storage/'.$edit_photo }}">
                         @endif
 
-                        <br>
                         <div wire:loading wire:target="photo">Uploading...</div><br>
                         @error('photo') <span class="text-red-500 text-danger text-xs">{{ $message }}</span> @enderror
                     </div>
+
+                    <div class="form-group">
+                        <label for="hod">Head Of Department</label>
+                        <select name="patient" wire:model.lazy="head" class="form-control" required>
+                            <option selected>Choose Head</option>
+                            @forelse ($employees as $hod)
+                                <option value="{{ $hod->id }}">{{ $hod->name }}</option>
+                            @empty
+                                <option value="" class="text-warning">No Employee Found!</option>
+                            @endforelse
+
+                        </select>
+                        @error('patient') <span class="text-red-500 text-danger text-xs">{{ $message }}</span> @enderror
+                    </div>
+
                     <div class="form-group">
                         <input type="submit" class="btn btn-primary" value="{{ $button_text }}">
                     </div>
@@ -64,6 +77,7 @@
                             <th>Name</th>
                             <th>Description</th>
                             <th>Photo</th>
+                            <th>HOD</th>
                             <th>Created at</th>
                             <th>Actions</th>
                         </tr>
@@ -73,7 +87,8 @@
                         <tr>
                             <td>{{ $department->name }}</td>
                             <td>{{ $department->description }}</td>
-                            <td><img width="50px" height="50px" src="http://127.0.0.1:8000/storage/{{ $department->photo_path }}" alt=""></td>
+                            <td><img width="50px" height="50px" src="{{  $department->photo_path }}" alt=""></td>
+                            <td>{{ $department->employee_id }}</td>
                             <td>{{ $department->created_at }}</td>
                             <td class="text-right">
                                 <button class="btn btn-outline-info btn-rounded" wire:click.prevent="edit({{ $department->id }})"><i class="fas fa-pen"></i></button>

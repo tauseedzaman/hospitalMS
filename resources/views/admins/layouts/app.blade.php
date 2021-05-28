@@ -134,6 +134,8 @@
 
             @yield('admin_content')
                 @livewireScripts
+
+            <script src="http://127.0.0.1:8000/js/livewire-turbolinks.js"></script>
             <script src="http://127.0.0.1:8000/js/alpine.js"></script>
             <script src="http://127.0.0.1:8000/assets/vendor/jquery/jquery.min.js"></script>
             <script src="http://127.0.0.1:8000/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>

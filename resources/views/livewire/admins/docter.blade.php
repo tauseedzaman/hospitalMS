@@ -113,7 +113,7 @@
                                     <td>{{ $doctor->phone }}</td>
                                     <td>{{ $doctor->department }}</td>
                                     <td>{{ $doctor->specialization }}</td>
-                                    <td><img width="100%" height="70px" src="{{env('APP_URL').'storage/'. $doctor->photo_path }}" alt=""></td>
+                                    <td><img width="100%" height="70px" src="{{ $doctor->photo_path }}" alt=""></td>
                                     <td>{{ $doctor->created_at }}</td>
                                     <td class="text-right">
                                         <button wire:click="edit({{ $doctor->id }})" class="btn btn-outline-info btn-rounded"><i class="fas fa-pen"></i></button>
