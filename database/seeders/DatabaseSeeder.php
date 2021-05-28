@@ -49,6 +49,7 @@ class DatabaseSeeder extends Seeder
             patientSeeder::class,
             departmentSeeder::class,
             doctorSeeder::class,
+            nurseSeeder::class,
             birthreportSeeder::class,
             operationreportSeeder::class,
             ]);

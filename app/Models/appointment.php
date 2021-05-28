@@ -14,8 +14,8 @@ class appointment extends Model
         'nurse_id',
         'doctor_id',
         'doctor_id',
-        'start_dt_time',
-        'end_dt_time',
+        'starting_time',
+        'ending_time',
     ];
 
 }

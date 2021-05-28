@@ -52,6 +52,8 @@ Route::post('/admin/login',[AdminController::class,'authenticate_admin'])->name(
 
     Route::get('/admin/employees',\App\Http\Livewire\Admins\employees::class)->name('employees');
 
+    Route::get('/admin/appointment',\App\Http\Livewire\Admins\Appiontment::class)->name('appointment');
+
 
 // });
 

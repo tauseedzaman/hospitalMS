@@ -18,9 +18,10 @@ class CreateAppointmentsTable extends Migration
             $table->foreignId('patient_id')->constrained();
             $table->foreignId('nurse_id')->constrained();
             $table->foreignId('doctor_id')->constrained();
-            $table->timestamp('start_dt_time')->nullable();
-            $table->timestamp('end_dt_time')->nullable();
+            $table->timestamp('starting_time')->nullable();
+            $table->timestamp('ending_time')->nullable();
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 
