@@ -15,7 +15,7 @@ class Appiontment extends Component
     public $nurse;
     public $doctor;
     public $start_timeee;
-    public $ending_time;
+    public $endtime;
 
     public $edit_appointment_id;
     public $button_text = "Add New Appointment";
@@ -34,20 +34,19 @@ class Appiontment extends Component
                 'doctor' => 'required|numeric',
                 'nurse' => 'required|numeric',
                 ]);
-
             appointment::create([
                 'patient_id'         => $this->patient,
                 'nurse_id'           => $this->nurse,
                 'doctor_id'         => $this->doctor,
-                'starting_time ' => $this->start_timeee,
-                'ending_time'    =>$this->ending_time,
+                'intime ' => $this->start_timeee,
+                'outtime ' => $this->endtime,
             ]);
             //unset variables
             $this->patient="";
             $this->doctor="";
             $this->nurse="";
             $this->start_timeee="";
-            $this->ending_time="";
+            $this->endtime="";
             session()->flash('message', 'Appointment Created successfully.');
         }
 
@@ -60,9 +59,9 @@ class Appiontment extends Component
 
         $this->patient = $appointment->patient_id;
         $this->doctor = $appointment->doctor_id;
-        $this->appointment = $appointment->nurse_id;
-        $this->start_timeee = $appointment->starting_time;
-        $this->ending_time = $appointment->ending_time;
+        $this->nurse = $appointment->nurse_id;
+        $this->start_timeee = $appointment->intime;
+        $this->endtime = $appointment->outtime;
 
         $this->button_text="Update Appointment";
     }
@@ -78,8 +77,8 @@ class Appiontment extends Component
         $appointment->patient_id = $this->patient;
         $appointment->doctor_id = $this->doctor;
         $appointment->nurse_id = $this->nurse;
-        $appointment->starting_time = $this->start_timeee;
-        $appointment->ending_time = $this->ending_time;
+        $appointment->intime = $this->start_timeee;
+        $appointment->outtime = $this->endtime;
 
         $appointment->save();
 
@@ -87,7 +86,7 @@ class Appiontment extends Component
         $this->doctor="";
         $this->nurse="";
         $this->start_timeee="";
-        $this->ending_time="";
+        $this->endtime="";
 
         session()->flash('message', 'Appointment Updated Successfully.');
 

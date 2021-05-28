@@ -15,7 +15,7 @@ class operationreportSeeder extends Seeder
      */
     public function run()
     {
-        for ($i=0; $i < 500; $i++) {
+        for ($i=0; $i < 5; $i++) {
             DB::table('operationreports')->insert([
                 'patient' => Str::random(10),
                 'description' => Str::random(20),

@@ -66,9 +66,9 @@
 
                     <div class="form-group">
                         <label for="end_time">End Time Of Appointment</label>
-                        <input type="datetime-local" name="end_time" class="form-control" placeholder="Set End Time Of Appointment" wire:model.lazy="end_timeee" />
-                        <p class="text-info">Current Value: {{ $end_timeee }}</p>
-                        @error('end_timeee') <span class="text-red-500 text-danger text-xs">{{ $message }}</span> @enderror
+                        <input type="datetime-local" name="end_time" class="form-control" placeholder="Set End Time Of Appointment" wire:model.lazy="endtime" />
+                        <p class="text-info">Current Value: {{ $endtime }}</p>
+                        @error('endtime') <span class="text-red-500 text-danger text-xs">{{ $message }}</span> @enderror
                     </div>
 
                         <div class="form-group">
@@ -96,8 +96,8 @@
                                     <td>{{ $appointment->patient_id }}</td>
                                     <td>{{ $appointment->nurse_id }}</td>
                                     <td>{{ $appointment->doctor_id }}</td>
-                                    <td>{{ $appointment->start_dt_time }}</td>
-                                    <td>{{ $appointment->end_timeee }}</td>
+                                    <td>{{ $appointment->intime }}</td>
+                                    <td>{{ $appointment->outtime }}</td>
                                     <td>{{ $appointment->created_at }}</td>
                                     <td class="text-right">
                                         <button wire:click="edit({{ $appointment->id }})" class="btn btn-outline-info btn-rounded"><i class="fas fa-pen"></i></button>
