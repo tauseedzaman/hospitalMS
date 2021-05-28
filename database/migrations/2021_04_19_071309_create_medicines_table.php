@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\Schema;
 class CreateMedicinesTable extends Migration
 {
     /**
-     * Run the migrations.
+     * Run the migrationss.
      *
      * @return void
      */
@@ -19,6 +19,7 @@ class CreateMedicinesTable extends Migration
             $table->string("quantity");
             $table->string("code");
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

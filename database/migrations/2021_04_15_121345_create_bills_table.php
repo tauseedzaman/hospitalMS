@@ -17,7 +17,9 @@ class CreateBillsTable extends Migration
             $table->id();
             $table->foreignId("patients_id");
             $table->string("amount");
+            $table->boolean('paued')->nullable()->default(false);
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 
