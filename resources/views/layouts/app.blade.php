@@ -1,7 +1,6 @@
 <!doctype html>
 
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}"
-    {{ $app = App\Models\general_settings::latest()->first() }}>
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}" {{ $app = App\Models\general_settings::latest()->first() }}>
 
 <head>
     <meta charset="utf-8">
@@ -12,9 +11,6 @@
 
     <title>{{ config('app.name', 'Laravel') }}</title>
 
-    <!-- Scripts -->
-    {{-- <script src="{{ asset('js/app.js') }}" defer></script> --}}
-
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
@@ -22,42 +18,44 @@
     <!-- Mobile Metas -->
     <meta name="viewport" content="initial-scale=1, maximum-scale=1">
     <!-- Site Icons -->
-    <link rel="shortcut icon" href="images/fevicon.ico.png" type="image/x-icon" />
+    <link rel="shortcut icon" href="{{ $app ? config('app.url') . 'storage/' . $app->favicon_path : config("app.url").'images/fevicon.ico.png'}} " type="image/x-icon" />
+
     <link rel="apple-touch-icon"
-        href="{{ $app ? config('app.url') . 'storage/' . $app->favicon_path : 'images/favicon.png' }}">
+        href="{{ $app ? config('app.url') . 'storage/' . $app->favicon_path :  config("app.url").'images/favicon.png' }}">
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="{{ config('app.url') }}css/bootstrap.min.css">
     <!-- Site CSS -->
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="{{  config('app.url') }}css/style.css">
     <!-- Colors CSS -->
-    <link rel="stylesheet" href="css/colors.css">
+    <link rel="stylesheet" href="{{  config('app.url') }}css/colors.css">
     <!-- ALL VERSION CSS -->
-    <link rel="stylesheet" href="css/versions.css">
+    <link rel="stylesheet" href="{{  config('app.url') }}css/versions.css">
     <!-- Responsive CSS -->
-    <link rel="stylesheet" href="css/responsive.css">
+    <link rel="stylesheet" href="{{  config('app.url') }}css/responsive.css">
     <!-- Custom CSS -->
-    <link rel="stylesheet" href="css/custom.css">
+    <link rel="stylesheet" href="{{  config('app.url') }}css/custom.css">
     <!-- Modernizer for Portfolio -->
     <script src="js/modernizer.js"></script>
     <!-- [if lt IE 9] -->
 </head>
 
 <body class="clinic_version">
+
     <!-- LOADER -->
     <div id="preloader">
-        <a href="{{ url('/') }}"><img class="preloader" src="images/loaders/heart-loading2.gif" alt=""></a>
+        <a href="{{ url('/') }}"><img class="preloader" src="{{ config('app.url') }}images/loaders/heart-loading2.gif" alt=""></a>
     </div>
     <!-- END LOADER -->
     <header>
         <div class="header-top wow fadeIn">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}"><img
-                        src="{{ $app ? config('app.url') . 'storage/' . $app->logo_path : 'images/logo.png' }}"
+                        src="{{ $app ? config('app.url') . 'storage/' . $app->logo_path :  config("app.url").'images/logo.png' }}"
                         alt="logo image "></a>
                 <div class="right-header">
                     <div class="header-info">
                         <div class="info-inner">
-                            <span class="icontop"><img src="images/phone-icon.png" alt="#"></span>
+                            <span class="icontop"><img src="{{ config('app.url') }}images/phone-icon.png" alt="#"></span>
                             <span class="iconcont"><a
                                     href="tel:{{ $app ? $app->business_phone : '123 123 123' }}">{{ $app ? $app->business_phone : '123 123 123' }}</a></span>
                         </div>
@@ -126,19 +124,6 @@
             </div>
         </div>
     </header>
-
-    {{-- <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="{{ route('logout') }}"
-                                       onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-                                        {{ __('Logout') }}
-                                    </a>
-
-                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                                        @csrf
-                                    </form> --}}
-    {{-- </div> --}}
-
     <main class="py-4">
         @yield('content')
     </main>
@@ -148,7 +133,7 @@
             <div class="row">
                 <div class="col-md-4">
                     <div class="logo padding">
-                        <a href="{{ url('/') }}"><img src="{{ $app ? $app->logo_path : 'images/logo.png' }}"
+                        <a href="{{ url('/') }}"><img src="{{ ($app) ? 'storage/'.$app->logo_path :  config("app.url").'images/logo.png' }}"
                                 alt=""></a>
                         <p>{{ $app ? $app->description : 'hi this isLocavore pork belly scen ester pine est chill wave microdosing pop uple itarian cliche artisan.' }}
                         </p>

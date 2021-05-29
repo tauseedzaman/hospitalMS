@@ -114,8 +114,8 @@
                                         </div>
 
                                         <div class="form-group"  >
-                                            <label for="business_email" class="form-control-label">Business Email</label>
-                                            <input type="text"placeholder="example@test.com" wire:model.lazy="business_email" name="business_email" class="form-control"">
+                                            <label for="email" class="form-control-label">Business Email</label>
+                                            <input type="text"placeholder="example@test.com" wire:model.lazy="business_email" name="email" class="form-control"">
                                             @error('business_email') <span class="text-red-500 text-danger text-xs">{{ $message }}</span>  @enderror
                                         </div>
                                         <div class="form-group">
