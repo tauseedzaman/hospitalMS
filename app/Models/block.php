@@ -11,7 +11,16 @@ class block extends Model
     use HasFactory,SoftDeletes;
 
     protected $fillable=[
-        'blockname',
+        'blockfloor',
         'blockcode'
     ];
+        /**
+         * Get all of the departments for the block
+         *
+         * @return \Illuminate\Database\Eloquent\Relations\HasMany
+         */
+        public function departments()
+        {
+            return $this->hasMany(department::class);
+        }
 }

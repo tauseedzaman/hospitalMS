@@ -100,8 +100,7 @@
                                 <th>Department</th>
                                 <th>Specialization</th>
                                 <th>Photo</th>
-                                <th>Dated</th>
-                                <th>Actions</th>
+                                    <th>Actions</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -114,7 +113,6 @@
                                     <td>{{ $doctor->department }}</td>
                                     <td>{{ $doctor->specialization }}</td>
                                     <td><img width="100%" height="70px" src="{{ $doctor->photo_path }}" alt=""></td>
-                                    <td>{{ $doctor->created_at }}</td>
                                     <td class="text-right">
                                         <button wire:click="edit({{ $doctor->id }})" class="btn btn-outline-info btn-rounded"><i class="fas fa-pen"></i></button>
                                         <button wire:click="delete({{ $doctor->id }})" onclick="return confirm('{{ __('Are You Sure ?')  }}')" class="btn btn-outline-danger btn-rounded"><i class="fas fa-trash"></i></button>

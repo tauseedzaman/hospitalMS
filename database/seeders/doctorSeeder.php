@@ -21,7 +21,7 @@ class doctorSeeder extends Seeder
                 'password'         => bcrypt('thepassword'),
                 'address'       => 'sorana '.$i.' steet',
                 'phone'         => "+92123456789",
-                'department'         => "Department ".rand(1,5),
+                'department'         => rand(1,5),
                 'specialization'         => "'.$i+1.'MBBS '.$i.'",
                 'photo_path'    => env('APP_URL').'images/'. 'doctor_01.jpg',
             ]);

@@ -20,7 +20,8 @@ class departmentSeeder extends Seeder
                 'name'          => 'Department '.$i.'',
                 'description'   => "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Porro, provident'.$i.'. ",
                 'photo_path'    => env('APP_URL').'images/department.jpg',
-                'employee_id'    => rand(1,5),
+                'hod_id'    => rand(1,5),
+                'block_id'    => rand(0,4),
             ]);
     }
 }

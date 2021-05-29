@@ -47,7 +47,9 @@ class DatabaseSeeder extends Seeder
         $this->call([
             employeeSeeder::class,
             patientSeeder::class,
+            blockSeeder::class,
             departmentSeeder::class,
+            hodSeeder::class,
             doctorSeeder::class,
             nurseSeeder::class,
             birthreportSeeder::class,

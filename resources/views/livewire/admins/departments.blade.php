@@ -56,14 +56,28 @@
                         <label for="hod">Head Of Department</label>
                         <select name="patient" wire:model.lazy="head" class="form-control" required>
                             <option selected>Choose Head</option>
-                            @forelse ($employees as $hod)
-                                <option value="{{ $hod->id }}">{{ $hod->name }}</option>
+                            @forelse ($hods as $hod)
+                                <option value="{{ $hod->id }}">{{ $hod->doctor_id }}</option>
                             @empty
                                 <option value="" class="text-warning">No Employee Found!</option>
                             @endforelse
 
                         </select>
                         @error('patient') <span class="text-red-500 text-danger text-xs">{{ $message }}</span> @enderror
+                    </div>
+
+                    <div class="form-group">
+                        <label for="block">Department Block</label>
+                        <select name="block" wire:model.lazy="block" aria-placeholder="Selct Block" class="form-control" required>
+                            <option selected>Choose block</option>
+                            @forelse ($blocks as $block)
+                                <option value="{{ $block->blockcode }}">{{ $block->blockcode }}</option>
+                            @empty
+                                <option  class="text-warning">No Block Found!</option>
+                            @endforelse
+
+                        </select>
+                        @error('block') <span class="text-red-500 text-danger text-xs">{{ $message }}</span> @enderror
                     </div>
 
                     <div class="form-group">
@@ -78,17 +92,18 @@
                             <th>Description</th>
                             <th>Photo</th>
                             <th>HOD</th>
+                            <th>BlockID</th>
                             <th>Created at</th>
                             <th>Actions</th>
                         </tr>
                     </thead>
                     <tbody>
                         @forelse ($departments as $department)
-                        <tr>
                             <td>{{ $department->name }}</td>
                             <td>{{ $department->description }}</td>
                             <td><img width="50px" height="50px" src="{{  $department->photo_path }}" alt=""></td>
-                            <td>{{ $department->employee_id }}</td>
+                            <td>{{ $department->hod_id }}</td>
+                            <td>{{ $department->block_id }}</td>
                             <td>{{ $department->created_at }}</td>
                             <td class="text-right">
                                 <button class="btn btn-outline-info btn-rounded" wire:click.prevent="edit({{ $department->id }})"><i class="fas fa-pen"></i></button>
