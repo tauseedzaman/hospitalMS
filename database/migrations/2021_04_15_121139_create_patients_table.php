@@ -17,9 +17,9 @@ class CreatePatientsTable extends Migration
             $table->id();
             $table->string("name");
             $table->string("email")->nullable();
-            $table->string("phone");
-            $table->string("address");
-            $table->string("gender");
+            $table->string("phone")->nullable();
+            $table->string("address")->nullable();
+            $table->string("gender")->nullable();
             $table->string("age")->nullable();
             $table->string('bloodgroup')->nullable();
             $table->string("photo_path")->nullable();

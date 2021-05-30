@@ -24,7 +24,7 @@ class patientSeeder extends Seeder
                 'address'       => 'sorana'.$i.'',
                 'age'       => rand(1,130),
                 'bloodgroup' => $groups[rand(0,4)],
-                'photo_path'    => 'null',
+                'photo_path'    => 'patient.png',
             ]);
         }
     }

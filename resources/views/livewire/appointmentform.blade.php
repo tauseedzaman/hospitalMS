@@ -33,10 +33,19 @@
                    </div>
                 </div>
 
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <div class="row">
+                       <div class="form-group">
+                          <input type="text" wire:model.lazy="address" name="address" placeholder="Your Address" class="form-control" />
+                          @error('address') <span class="text-red-500 text-danger text-xs">{{ $message }}</span> @enderror
+                       </div>
+                    </div>
+                 </div>
+
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 ">
                    <div class="row">
                        <div class="form-group">
-                           <input type="datetime-local" placeholder="Set Time Of Appointment" wire:model.lazy="stime" class="form-control" />
+                           <input type="datetime-local" name="stime" placeholder="Set Time Of Appointment" wire:model.lazy="stime" class="form-control" />
                            @error('stime') <span class="text-red-500 text-danger text-xs">{{ $message }}</span> @enderror
                        </div>
                    </div>
@@ -45,7 +54,7 @@
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                    <div class="row">
                       <div class="form-group">
-                         <select wire:model.lazy="doctor"  class="form-control">
+                         <select wire:model.lazy="doctor" name="doctor"  class="form-control">
                           @forelse (\App\Models\doctor::all() as $doctor)
                             <option value="{{ $doctor->name }}">{{ $doctor->name }}</option>
                           @empty

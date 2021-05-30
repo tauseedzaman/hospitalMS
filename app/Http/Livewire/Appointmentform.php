@@ -11,6 +11,7 @@ class Appointmentform extends Component
     public $phone;
     public $doctor;
     public $stime;
+    public $address;
     public $message;
 
     public function store_requested_appointment()
@@ -21,6 +22,7 @@ class Appointmentform extends Component
             'stime' => 'required',
             'phone' => 'required|numeric|max:10000000000000',
             'doctor' => 'required',
+            'address' => 'required',
             'message' => 'required|max:550',
             ]);
 
@@ -29,6 +31,7 @@ class Appointmentform extends Component
             'email'         => $this->email,
             'phone'         => $this->phone,
             'stime'       => $this->stime,
+            'address'       => $this->address,
             'doctor'       => $this->doctor,
             'message' => $this->message,
         ]);
@@ -39,6 +42,7 @@ class Appointmentform extends Component
            $this->stime="";
            $this->phone="";
            $this->doctor="";
+           $this->address="";
            $this->message="";
 
            session()->flash('message', 'Your Appointment Added successfully.');

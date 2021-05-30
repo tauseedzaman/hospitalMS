@@ -37,6 +37,8 @@
     <!-- Modernizer for Portfolio -->
     <script src="js/modernizer.js"></script>
     <!-- [if lt IE 9] -->
+    @livewireStyles
+    @livewireScripts
 </head>
 
 <body class="clinic_version">
@@ -109,18 +111,7 @@
                         </ul>
                     </div>
                 </nav>
-                <div class="serch-bar">
-                    <div id="custom-search-input">
-                        <div class="input-group col-md-12">
-                            <input type="text" class="form-control input-lg" placeholder="Search" />
-                            <span class="input-group-btn">
-                                <button class="btn btn-info btn-lg" type="button">
-                                    <i class="fa fa-search" aria-hidden="true"></i>
-                                </button>
-                            </span>
-                        </div>
-                    </div>
-                </div>
+               @livewire('search')
             </div>
         </div>
     </header>
@@ -152,27 +143,7 @@
                                 aria-hidden="true"></i>{{ $app ? $app->business_phone : '123 123 123' }}</p>
                     </div>
                 </div>
-                <div class="col-md-4">
-                    <div class="subcriber-info">
-                        <h3>SUBSCRIBE</h3>
-                        <p>Get healthy news, tip and solutions to your problems from our experts.</p>
-                        <div class="subcriber-box">
-                            <form id="mc-form" class="mc-form">
-                                <div class="newsletter-form">
-                                    <input type="email" autocomplete="off" id="mc-email" placeholder="Email address"
-                                        class="form-control" name="EMAIL">
-                                    <button class="mc-submit" type="submit"><i class="fa fa-paper-plane"></i></button>
-                                    <div class="clearfix"></div>
-                                    <div class="mailchimp-alerts">
-                                        <div class="mailchimp-submitting"></div>
-                                        <div class="mailchimp-success"></div>
-                                        <div class="mailchimp-error"></div>
-                                    </div>
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-                </div>
+                @livewire('subscribe')
             </div>
         </div>
     </footer>

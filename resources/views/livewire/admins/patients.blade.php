@@ -85,10 +85,10 @@
                             </div>
                         </div>
                     </div>
-                    @if ($indoor)
-                    <h1>out door is on</h1>
-                    @endif
-                    @if ($indoor)
+                    {{-- @if ($indoor) --}}
+                    {{-- <h1>out door is on</h1> --}}
+                    {{-- @endif --}}
+                    {{-- @if ($indoor) --}}
                     <div class="form-group"  x-data="{ isUploading: false, progress: 0 }" x-on:livewire-upload-start="isUploading = true" x-on:livewire-upload-finish="isUploading = false" x-on:livewire-upload-error="isUploading = false"  x-on:livewire-upload-progress="progress = $event.detail.progress">
                         <label class="form-control-label">Photo</label>
                         <div class="custom-file">
@@ -116,7 +116,7 @@
 
 
                     </div>
-                    @endif
+                    {{-- @endif --}}
 
                         <div class="form-group">
                             <input type="submit" class="btn btn-primary" value="{{ $button_text }}">
@@ -128,11 +128,11 @@
                             <tr>
                                 <th>Name</th>
                                 <th>Email</th>
-                                <th>Photo</th>
-                                <th>Gender</th>
                                 <th>Age</th>
+                                <th>Gender</th>
                                 <th>Address</th>
                                 <th>BloodGroup</th>
+                                <th>Photo</th>
                                 <th>Dated</th>
                                 <th>Actions</th>
                             </tr>
@@ -142,11 +142,11 @@
                                 <tr>
                                     <td>{{ $patient->name }}</td>
                                     <td>{{ $patient->email }}</td>
-                                    <td>{{ $patient->phone }}</td>
-                                    <td>{{ $patient->gender }}</td>
-                                    <td>{{ $patient->age }}</td>
-                                    <td>{{ $patient->address }}</td>
-                                    <td><img width="100%" height="70px" src="{{env('APP_URL').'storage/'. $patient->photo_path }}" alt="No Image"></td>
+                                    <td>{{ $patient->age ? : 'Null' }}</td>
+                                    <td>{{ $patient->gender ? : 'Null' }}</td>
+                                    <td>{{ $patient->address ? : 'Null' }}</td>
+                                    <td>{{ $patient->bloodgroup ? : 'Null' }}</td>
+                                    <td><img width="100%" height="70px" src="{{(env('APP_URL').'storage/'. $patient->photo_path)  ? : config('app.url').'images/patient.png'  }}" alt="No Image"></td>
                                     <td>{{ $patient->created_at }}</td>
                                     <td class="text-right">
                                         <button wire:click="edit({{ $patient->id }})" class="btn btn-outline-info btn-rounded"><i class="fas fa-pen"></i></button>
