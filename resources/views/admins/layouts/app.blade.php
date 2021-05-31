@@ -71,8 +71,16 @@
                 </li>
                 <li>
                     <a href="{{ route('blocks') }}"><i class="fas fa-file-alt"></i>Blocks</a>
-                </li><li>
-                    <a href="{{ route('requestedAppointment') }}"><i class="fas fa-file-alt"></i>Appointment Requests</a>
+                </li>
+                <li>
+                    <a href="{{ route('requestedAppointment') }}"><i class="fas fa-file-alt"></i>Appointment
+                        Requests</a>
+                </li>
+                <li>
+                    <a href="{{ route('subscibers') }}"><i class="fas fa-file-alt"></i>Subscribers</a>
+                </li>
+                <li>
+                    <a href="{{ route('contactedus') }}"><i class="fas fa-file-alt"></i>Contacted Messages</a>
                 </li>
                 <li>
                     <a href="#authmenu" data-toggle="collapse" aria-expanded="false"

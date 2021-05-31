@@ -54,6 +54,8 @@ class DatabaseSeeder extends Seeder
             nurseSeeder::class,
             birthreportSeeder::class,
             operationreportSeeder::class,
+            subscriberSeeder::class,
+            contactSeeder::class,
             ]);
 
         // \App\Models\User::factory(10)->create();

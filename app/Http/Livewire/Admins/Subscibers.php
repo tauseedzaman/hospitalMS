@@ -16,7 +16,7 @@ class Subscibers extends Component
     public function render()
     {
         return view('livewire.admins.subscibers',[
-            'subscribers' => subscriber::paginate(2)
+            'subscribers' => subscriber::all()
         ])->layout('admins.layouts.app');
     }
 }
