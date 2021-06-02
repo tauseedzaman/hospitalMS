@@ -42,7 +42,7 @@
                         <thead>
                                 <tr>
                                     <th class="text-center">ID</th>
-                                    <th class="text-center">HOD Name</th>
+                                    <th class="text-center">Doctor id</th>
                                     <th class="text-center">Dated</th>
                                     <th class="text-center">Actions</th>
                                 </tr>

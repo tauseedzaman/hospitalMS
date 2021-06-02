@@ -54,16 +54,16 @@
 
                     <div class="form-group">
                         <label for="hod">Head Of Department</label>
-                        <select name="patient" wire:model.lazy="head" class="form-control" required>
+                        <select name="hod" wire:model.lazy="head" class="form-control" required>
                             <option selected>Choose Head</option>
                             @forelse ($hods as $hod)
                                 <option value="{{ $hod->id }}">{{ $hod->doctor_id }}</option>
                             @empty
-                                <option value="" class="text-warning">No Employee Found!</option>
+                                <option value="" class="text-warning">No head Found!</option>
                             @endforelse
 
                         </select>
-                        @error('patient') <span class="text-red-500 text-danger text-xs">{{ $message }}</span> @enderror
+                        @error('head') <span class="text-red-500 text-danger text-xs">{{ $message }}</span> @enderror
                     </div>
 
                     <div class="form-group">
@@ -91,7 +91,7 @@
                             <th>Name</th>
                             <th>Description</th>
                             <th>Photo</th>
-                            <th>HOD</th>
+                            <th>HOD ID</th>
                             <th>BlockID</th>
                             <th>Created at</th>
                             <th>Actions</th>
@@ -118,6 +118,7 @@
 
                     </tbody>
                 </table>
+                {{ $departments->links() }}
             </div>
  </div>
 </div>

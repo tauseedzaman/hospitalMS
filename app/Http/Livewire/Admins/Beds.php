@@ -6,10 +6,14 @@ use App\Models\beds as ModelsBeds;
 use App\Models\department;
 use App\Models\rooms;
 use Livewire\Component;
+use Livewire\WithPagination;
 
 class Beds extends Component
 {
 
+    use WithPagination;
+
+    protected $paginationTheme = 'bootstrap';
     public $department;
     public $room;
 
@@ -103,7 +107,7 @@ class Beds extends Component
         return view('livewire.admins.beds',[
             'departments' => department::all(),
             'rooms' => rooms::all(),
-            'beds' => ModelsBeds::where('room_id',$this->room)
+            'beds' => ModelsBeds::latest()->paginate(10)
 
         ])->layout('admins.layouts.app');
     }

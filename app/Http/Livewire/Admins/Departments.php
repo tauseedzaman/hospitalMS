@@ -9,10 +9,14 @@ use Illuminate\Support\Facades\Storage;
 use Intervention\Image\ImageManagerStatic;
 use Illuminate\Support\Str;
 use Livewire\WithFileUploads;
+use Livewire\WithPagination;
 
 class Departments extends Component
 {
     use WithFileUploads;
+    use WithPagination;
+
+    protected $paginationTheme = 'bootstrap';
     public $name;
     public $head;
     public $block;
@@ -33,8 +37,8 @@ class Departments extends Component
             $this->validate([
                 'name' => 'required|max:50',
                 'descriptions' => 'required|max:255',
-                'head' => 'required',
-                'block' => 'required',
+                'head' => 'required|numeric|unique:departments,hod_id,except,id',
+                'block' => 'required|numeric',
                 'photo' => 'required|image|max:3072', //3MB
                 ]);
             department::create([
@@ -124,7 +128,7 @@ class Departments extends Component
     {
 
         return view('livewire.admins.departments',[
-            'departments' => department::all(),
+            'departments' => department::latest()->paginate(10),
             'hods' => hod::all(),
             'blocks' => block::all(),
         ])->layout('admins.layouts.app');

@@ -8,18 +8,24 @@ use Livewire\Component;
 use Illuminate\Support\Facades\Storage;
 use Intervention\Image\ImageManagerStatic;
 use Illuminate\Support\Str;
+use Livewire\WithPagination;
+
 use Livewire\WithFileUploads;
 
 class Docter extends Component
 {
     use WithFileUploads;
+    use WithPagination;
+
+    protected $paginationTheme = 'bootstrap';
+
 
     public $name;
     public $Email;
     public $Password;
     public $Address;
     public $Phone;
-    public $department;
+    public $department = 'null';
     public $Specialization;
     public $Photo;
 
@@ -38,10 +44,10 @@ class Docter extends Component
         }else{
             $this->validate([
                 'name' => 'required||min:6|max:50',
-                'Email' => 'required|email',
+                'Email' => 'required|email|unique:doctors,email,except,id',
                 'Password' => 'required|min:6',
                 'Address' => 'required',
-                'Phone' => 'required',
+                'Phone' => 'required|unique:doctors,phone,except,id',
                 'department' => 'required',
                 'Specialization' => 'required',
                 'Photo' => 'required|image|max:3072', //3MB
@@ -157,8 +163,7 @@ class Docter extends Component
     public function render()
     {
         return view('livewire.admins.docter',[
-            'departments'=>department::all(),
-            'doctors'=>doctor::all(),
+            'doctors'=>doctor::latest()->paginate(10),
         ])->layout('admins.layouts.app');
     }
 }

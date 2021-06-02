@@ -125,8 +125,8 @@
                     <table width="100%" class="table table-hover" id="">
                         <thead>
                             <tr>
+                                <th>ID</th>
                                 <th>Name</th>
-                                <th>Email</th>
                                 <th>Phone</th>
                                 <th>Gender</th>
                                 <th>Address</th>
@@ -140,8 +140,8 @@
                         <tbody>
                             @forelse ($nurses as $nurse)
                                 <tr>
+                                    <td>{{ $nurse->id }}</td>
                                     <td>{{ $nurse->name }}</td>
-                                    <td>{{ $nurse->email }}</td>
                                     <td>{{ $nurse->phone }}</td>
                                     <td>{{ $nurse->gender }}</td>
                                     <td>{{ $nurse->position }}</td>
@@ -168,11 +168,11 @@
                                 <td class="text-warning">{{ __('Null') }}</td>
                                 <td class="text-warning">{{ __('Null') }}</td>
                                 <td class="text-warning">{{ __('Null') }}</td>
-                                <td class="text-warning">{{ __('Null') }}</td>
                                 </tr>
                             @endforelse
                         </tbody>
                     </table>
+                    {{ $nurses->links() }}
                 </div>
             </div>
         </div>

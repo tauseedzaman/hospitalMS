@@ -4,7 +4,7 @@
             <div class="page-title">
                 <h3 class="text-info">{{ env('APP_NAME') }}  Clients Messages</h3>
             </div>
-            <div  >
+            <div>
                 @if (session()->has('message'))
                 <div class="alert alert-success"  >
                     {{ session('message') }}
@@ -18,7 +18,7 @@
                 <div class="box-body">
                     <div class="text-info" wire:loading>Loading..</div>
                     <div class="text-capitalize bg-dark p-2 shadow mb-3 text-center text-lg text-light rounded" >{{ _("Clients Messages") }}</div>
-                    <table  class="table table-hover"  style="" id="">
+                    <table  class="table table-hover">
                         <thead>
                             <tr>
                                 <th class="text-center">ID</th>

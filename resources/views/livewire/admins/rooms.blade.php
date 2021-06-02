@@ -32,6 +32,16 @@
 
                         @error('department') <span class="text-red-500 text-danger text-xs">{{ $message }}</span> @enderror
                     </div>
+                    <div class="form-group">
+                        <label for="roomtype">Room Type</label>
+                        <input type="text" placeholder="Enter Room Type" name="roomtype" wire:model.lazy="roomtype" class="form-control" required />
+                        @error('roomtype') <span class="text-red-500 text-danger text-xs">{{ $message }}</span> @enderror
+                    </div>
+                    <div class="form-group">
+                        <label for="available">Available</label>
+                        <input type="checkbox" name="available" wire:model.lazy="available" class="form-control" />
+                        @error('available') <span class="text-red-500 text-danger text-xs">{{ $message }}</span> @enderror
+                    </div>
                         <div class="form-group">
                             <input type="submit" class="btn btn-primary" value="{{ $button_text }}">
                         </div>
@@ -42,8 +52,9 @@
                         <thead>
                             <tr>
                                 <th>Room No</th>
+                                <th>Room Type</th>
                                 <th>Department</th>
-                                <th>Department Photo</th>
+                                <th>Avaialble</th>
                                 <th>Dated</th>
                                 <th>Actions</th>
                             </tr>
@@ -52,8 +63,9 @@
                             @forelse ($rooms as $room)
                                 <tr>
                                     <td>{{ $room->id }}</td>
+                                    <td>{{ $room->roomtype }}</td>
                                     <td>{{ $room->department->name }}</td>
-                                    <td><img width="40px" height="40px" src="{{ env('APP_URL').'storage/'.$room->department->photo_path }}" alt="department image"></td>
+                                    <td>{{ $room->available }}</td>
                                     <td>{{ $room->created_at }}</td>
                                     <td class="text-right">
                                         <button wire:click="edit({{ $room->id }})" class="btn btn-outline-info btn-rounded"><i class="fas fa-pen"></i></button>
@@ -71,6 +83,7 @@
                             @endforelse
                             </tbody>
                     </table>
+                    {{ $rooms->links() }}
                 </div>
      </div>
 </div>

@@ -10,7 +10,7 @@
             <div class="card m-3 my-3">
 
                 <div class="card-body">
-                    <form method="POST" class="py-3" action="{{ route('admin_login') }}">
+                    <form method="POST" class="py-3"  action="{{ route('login') }}">
                         @csrf
 
                         <div class="form-group row">

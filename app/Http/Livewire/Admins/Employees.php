@@ -4,9 +4,13 @@ namespace App\Http\Livewire\Admins;
 
 use App\Models\employee;
 use Livewire\Component;
+use Livewire\WithPagination;
 
 class Employees extends Component
 {
+    use WithPagination;
+
+    protected $paginationTheme = 'bootstrap';
 
     public $name;
     public $email;
@@ -133,7 +137,7 @@ class Employees extends Component
     public function render()
     {
         return view('livewire.admins.employees',[
-            'employees' => employee::all(),
+            'employees' => employee::latest()->paginate(10),
         ])->layout('admins.layouts.app');
     }
 }

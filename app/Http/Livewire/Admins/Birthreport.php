@@ -10,11 +10,16 @@ use Illuminate\Support\Facades\Storage;
 use Intervention\Image\ImageManagerStatic;
 use Illuminate\Support\Str;
 use Livewire\WithFileUploads;
+use Livewire\WithPagination;
 
 class Birthreport extends Component
 {
 
     use WithFileUploads;
+    use WithPagination;
+
+    protected $paginationTheme = 'bootstrap';
+
     public $patient;
     public $details;
     public $doctor;
@@ -57,9 +62,8 @@ class Birthreport extends Component
     {
         $birthreport = ModelsBirthreport::findOrFail($id);
         $this->edit_birth_report_id = $id;
-
         $this->patient = $birthreport->patient;
-        $this->description = $birthreport->details;
+        $this->details = $birthreport->description;
         $this->doctor = $birthreport->doctor;
 
         $this->button_text="Update Birth Report";
@@ -100,7 +104,7 @@ class Birthreport extends Component
     public function render()
     {
         return view('livewire.admins.birthreport',[
-            'BirthReports' => ModelsBirthreport::all(),
+            'BirthReports' => ModelsBirthreport::latest()->paginate(10),
             'doctors' => doctor::all(),
             'patients' => patient::all(),
         ])->layout('admins.layouts.app');

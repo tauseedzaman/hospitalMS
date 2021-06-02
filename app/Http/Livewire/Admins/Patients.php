@@ -8,10 +8,15 @@ use Illuminate\Support\Facades\Storage;
 use Intervention\Image\ImageManagerStatic;
 use Illuminate\Support\Str;
 use Livewire\WithFileUploads;
+use Livewire\WithPagination;
 
 class Patients extends Component
 {
     use WithFileUploads;
+    use WithPagination;
+
+    protected $paginationTheme = 'bootstrap';
+
     public $name;
     public $email;
     public $phone;
@@ -164,7 +169,7 @@ class Patients extends Component
     public function render()
     {
         return view('livewire.admins.patients',[
-            'patients' => patient::all(),
+            'patients' => patient::latest()->paginate(10),
         ])->layout('admins.layouts.app');
     }
 }

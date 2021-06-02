@@ -9,6 +9,7 @@ class CreateRoomsTable extends Migration
     /**
      * Run the migrations.
      *
+     *
      * @return void
      */
     public function up()
@@ -17,7 +18,6 @@ class CreateRoomsTable extends Migration
             $table->id();
             $table->foreignId('department_id')->constrained();
             $table->string('roomtype', 100)->nullable()->default('text');
-            $table->foreignId('block_id')->contrand();
             $table->boolean('available')->nullable()->default(false);
             $table->timestamps();
             $table->softDeletes();

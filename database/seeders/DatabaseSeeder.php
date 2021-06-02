@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use App\Models\User;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\Storage;
 
 class DatabaseSeeder extends Seeder
 {
@@ -14,14 +15,18 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        // User::create([
-        //     'name' =>'tauseed zaman',
-        //     'email' =>'tauseed@test.com',
-        //     'password' =>bcrypt('tauseed'),
-        //     'role' =>'super admin',
-        //     'is_super_admin' =>true,
-        //     'created_at' =>now(),
-        // ]);
+
+        Storage::disk('public')->put('patient.png', config('app.url').'images/patient.png');
+        Storage::disk('public')->put('doctor.png', config('app.url').'images/doctor.png');
+
+        User::create([
+            'name' =>'tauseed zaman',
+            'email' =>'tauseed@test.com',
+            'password' =>bcrypt('tauseed'),
+            'role' =>'super admin',
+            'is_super_admin' =>true,
+            'created_at' =>now(),
+        ]);
         // User::create([
         //     'name' =>'store employeer',
         //     'email' =>'storeemployeer@test.com',

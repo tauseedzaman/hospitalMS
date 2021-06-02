@@ -98,14 +98,10 @@
                             <li onclick="check_active('Contact')"><a id="Contact" data-scroll
                                     href="{{ url('contact') }}">Contact</a></li>
                             @auth
-
                                 @if (auth()->user()->is_super_admin)
-
                                     <li onclick="check_active('admin-area')"><a id="admin-area" data-scroll
                                             href="{{ route('admin_settings') }}">Admin Area</a></li>
-
                                 @endif
-
                             @endauth
 
                         </ul>

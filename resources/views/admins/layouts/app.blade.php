@@ -17,6 +17,8 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
+
+
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
     @livewireStyles
@@ -29,7 +31,7 @@
             <ul class="mt-5 list-unstyled components text-secondary">
                 {{-- @auth --}}
                 <li>
-                    <a href="{{ route('admins') }}"><i class="fas fa-home"></i> Dashboard</a>
+                    {{-- <a href="{{ route('admins') }}"><i class="fas fa-home"></i> Dashboard</a> --}}
                 </li>
                 <li>
                     <a href="{{ route('admin_docters') }}"><i class="fas fa-file-alt"></i>Docters</a>
@@ -150,7 +152,7 @@
                                         <li><a href="" class="dropdown-item"><i class="fas fa-cog"></i> Settings</a>
                                         </li>
                                         <div class="dropdown-divider"></div>
-                                        <li><a href="{{ auth()->logout() }}" class="dropdown-item"><i
+                                        <li><a href="{{ route('login') }}" class="dropdown-item"><i
                                                     class="fas fa-sign-out-alt"></i> Logout</a></li>
                                     </ul>
                                 </div>

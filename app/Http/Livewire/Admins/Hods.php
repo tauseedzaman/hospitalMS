@@ -8,12 +8,12 @@ use Livewire\Component;
 class Hods extends Component
 {
 
-    public $doctor_id;
+    public $doctor;
 
     public $edit_hod_id;
     public $button_text = "Add New HOD";
 
-    public function add_block()
+    public function add_hod()
     {
         if ($this->edit_hod_id) {
 
@@ -21,14 +21,14 @@ class Hods extends Component
 
         }else{
             $this->validate([
-                'doctor_id' => 'required|numeric|unique:hod,doctor_id,except,id',
+                'doctor' => 'required|numeric|unique:hods,doctor_id,except,id',
                 ]);
 
             hod::create([
-                'doctor_id'         => $this->doctor_id,
+                'doctor_id'         => $this->doctor,
             ]);
 
-            $this->doctor_id="";
+            $this->doctor="";
 
             session()->flash('message', 'HOD Added successfully.');
         }
@@ -40,7 +40,7 @@ class Hods extends Component
     {
         $block = hod::findOrFail($id);
         $this->edit_hod_id = $id;
-        $this->doctor_id = $block->doctor_id;
+        $this->doctor = $block->doctor_id;
 
         $this->button_text="Update HOD";
     }
@@ -52,11 +52,11 @@ class Hods extends Component
             ]);
 
         $hod = hod::findOrFail($id);
-        $hod->doctor_id = $this->doctor_id;
+        $hod->doctor_id = $this->doctor;
 
         $hod->save();
 
-        $this->doctor_id="";
+        $this->doctor="";
 
         $this->edit_hod_id="";
 
@@ -71,7 +71,7 @@ class Hods extends Component
         hod::findOrFail($id)->delete();
         session()->flash('message', 'HOD Deleted Successfully.');
 
-        $this->doctor_id="";
+        $this->doctor="";
 }
     public function render()
     {

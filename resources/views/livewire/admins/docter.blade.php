@@ -44,7 +44,7 @@
                         <input type="number" min="0" max="10000000000000" name="Phone" wire:model.lazy="Phone"  placeholder="Enter Phone" class="form-control"   />
                         @error('Phone') <span class="text-red-500 text-danger text-xs">{{ $message }}</span> @enderror
                     </div>
-                    <div class="form-group">
+                    {{-- <div class="form-group">
                         <label for="Department">Departments</label>
                         <select name="Department" wire:model.lazy="department" class="form-control"  >
                             @forelse ($departments as $department)
@@ -54,7 +54,7 @@
                             @endforelse
                         </select>
                         @error('Phone') <span class="text-red-500 text-danger text-xs">{{ $message }}</span> @enderror
-                    </div>
+                    </div> --}}
                     <div class="form-group">
                         <label for="Specialization">Specialization</label>
                         <input type="text" name="Specialization" wire:model.lazy="Specialization"  placeholder="Enter Specialization" class="form-control"   />
@@ -93,11 +93,12 @@
                     <table width="100%" class="table table-hover" id="">
                         <thead>
                             <tr>
+                                <th>ID</th>
                                 <th>Name</th>
                                 <th>Email</th>
                                 <th>Address</th>
                                 <th>Phone</th>
-                                <th>Department</th>
+                                {{-- <th>Department</th> --}}
                                 <th>Specialization</th>
                                 <th>Photo</th>
                                     <th>Actions</th>
@@ -106,11 +107,12 @@
                         <tbody>
                             @forelse ($doctors as $doctor)
                                 <tr>
+                                    <td>{{ $doctor->id }}</td>
                                     <td>{{ $doctor->name }}</td>
                                     <td>{{ $doctor->email }}</td>
                                     <td>{{ $doctor->address }}</td>
                                     <td>{{ $doctor->phone }}</td>
-                                    <td>{{ $doctor->department }}</td>
+                                    {{-- <td>{{ $doctor->department }}</td> --}}
                                     <td>{{ $doctor->specialization }}</td>
                                     <td><img width="100%" height="70px" src="{{ $doctor->photo_path }}" alt=""></td>
                                     <td class="text-right">
@@ -131,6 +133,7 @@
                             @endforelse
                                                     </tbody>
                     </table>
+                    {{ $doctors->links() }}
                 </div>
      </div>
 </div>

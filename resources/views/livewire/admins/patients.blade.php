@@ -167,6 +167,7 @@
                             @endforelse
                             </tbody>
                     </table>
+                    {{ $patients->links() }}
                 </div>
      </div>
 </div>

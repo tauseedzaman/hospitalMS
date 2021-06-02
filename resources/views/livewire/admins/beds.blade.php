@@ -96,6 +96,7 @@
                             @endforelse
                             </tbody>
                     </table>
+                    {{ $beds->links() }}
                 </div>
      </div>
 </div>
