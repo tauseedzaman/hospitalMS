@@ -3,8 +3,8 @@
 namespace App\Http\Livewire\Admins;
 
 use App\Models\beds as ModelsBeds;
-use App\Models\department;
 use App\Models\rooms;
+use App\Models\patient;
 use Livewire\Component;
 use Livewire\WithPagination;
 
@@ -14,30 +14,28 @@ class Beds extends Component
     use WithPagination;
 
     protected $paginationTheme = 'bootstrap';
-    public $department;
     public $room;
 
-    public $department_id;
+    public $patient_id;
     public $room_id;
     public $alloted_time;
     public $discharge_time;
     public $edit_bed_id;
     public $button_text = "Add New Bed";
 
-    public function add_room()
+    public function add_bed()
     {
         if ($this->edit_bed_id) {
 
             $this->update($this->edit_bed_id);
 
         }else{
-            $this->validate([
-                'room_id' => 'required|numeric',
-                'patient_id' => 'required|numeric',
-                'alloted_time' => 'required',
-                'discharge_time' => 'required',
-                ]);
-
+           $this->validate([
+            'room_id' => 'required|numeric',
+            'patient_id' => 'required|numeric|unique:beds,patient_id,except,id',
+            'alloted_time' => 'required',
+            'discharge_time' => 'required',
+            ]);
             ModelsBeds::create([
                 'room_id'         => $this->room_id,
                 'patient_id'         => $this->patient_id,
@@ -50,7 +48,7 @@ class Beds extends Component
             $this->alloted_time="";
             $this->discharge_time="";
 
-            session()->flash('message', 'Bed Created successfully.');
+            session()->flash('message', 'Bed Assigned successfully.');
         }
 
     }
@@ -60,7 +58,8 @@ class Beds extends Component
     {
         $Room = ModelsBeds::findOrFail($id);
         $this->edit_bed_id = $id;
-        $this->department = $Room->department_id;
+        $this->room_id = $Room->room_id;
+        $this->patient_id = $Room->patient_id;
 
         $this->button_text="Update Room";
     }
@@ -75,7 +74,8 @@ class Beds extends Component
             ]);
 
         $Room = ModelsBeds::findOrFail($id);
-        $Room->department_id = $this->department;
+        $Room->room_id = $this->room_id;
+        $Room->patient_id = $this->patient_id;
 
         $Room->save();
 
@@ -105,8 +105,8 @@ class Beds extends Component
     public function render()
     {
         return view('livewire.admins.beds',[
-            'departments' => department::all(),
-            'rooms' => rooms::all(),
+            'patients' => patient::all(),
+            'rooms' => rooms::where('available',true)->get(),
             'beds' => ModelsBeds::latest()->paginate(10)
 
         ])->layout('admins.layouts.app');

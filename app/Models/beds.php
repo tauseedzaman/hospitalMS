@@ -4,11 +4,10 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\SoftDeletes;
 
 class beds extends Model
 {
-    use HasFactory,SoftDeletes;
+    use HasFactory;
     protected $fillable=[
         'room_id',
         'patient_id',
