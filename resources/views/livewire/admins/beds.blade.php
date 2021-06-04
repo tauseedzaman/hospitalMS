@@ -22,7 +22,7 @@
 
                     <div class="form-group">
                         <label for="Room">Room</label>
-                        <select name="Room" wire:model.lazy="room" class="form-control" required>
+                        <select name="Room" wire:model.lazy="room_id" class="form-control" required>
                             <option selected>Choose Room</option>
                             @forelse ($rooms as $room)
                                 <option value="{{ $room->id }}">room {{ $room->id }}</option>
@@ -30,13 +30,13 @@
                                 <option value="">Null</option>
                             @endforelse
                         </select>
-                        @error('room') <span class="text-red-500 text-danger text-xs">{{ $message }}</span> @enderror
+                        @error('room_id') <span class="text-red-500 text-danger text-xs">{{ $message }}</span> @enderror
                     </div>
 
                     <div class="form-group">
                         <label for="patient">Patient</label>
                         <select name="patient" wire:model.lazy="patient_id" class="form-control" >
-                            <option selected>Choose Patient</option>
+                            <option value="null" selected>Choose Patient</option>
                             @forelse ($patients as $patient)
                                 <option value="{{ $patient->id }}">{{ $patient->name }}</option>
                             @empty
