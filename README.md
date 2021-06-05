@@ -1,9 +1,9 @@
 <h1 style="color:blue">Hospital Mangment System Made with Laravel 8</h1>
-<h3>Frint End</h3>
+<h3>Front End</h3>
 
 <img src="FrontEnd.png" />
 
-<h3>tables</h3>
+<h3>Database Tables</h3>
 
 <img src="Tables_Screenshot.png" />
 
@@ -19,7 +19,7 @@
     <li> > php artisan storage:link</li>
     <li> > php artisan migrate:fresh --seed</li>
     <li> > php artisan serve</li>
-    <li> <a href="127.0.0.1:8000/" </li>
+    <li> <a href="http://127.0.0.1:8000/">http://127.0.0.1:8000/</a> </li>
     </ul>
     <p style="color:yellow">If you like our project please leave a star ❤<p>
 
