@@ -1,6 +1,8 @@
 <h1 style="color:blue">Hospital Mangment System Made with Laravel 8</h1>
+
 <h3>tables</h3>
-<img src="" />
+
+<img src="Table_Screenshot.png" />
 
 <h2 style="color:cyan">Installation</h2>
 <ul>
