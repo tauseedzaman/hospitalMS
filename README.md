@@ -1,3 +1,4 @@
+<p><b>Notic</b>: This Porject is still under construction. If you have any suggestion feel free to share with us we love 💖 at thank you</p>
 <h1 style="color:blue">Hospital Mangment System Made with Laravel 8</h1>
 <h3>Front End</h3>
 
