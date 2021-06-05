@@ -56,6 +56,7 @@
                             @endforelse
                             </tbody>
                     </table>
+                    {{ $contacted->links() }}
                 </div>
      </div>
 </div>

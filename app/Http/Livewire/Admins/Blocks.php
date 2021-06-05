@@ -4,8 +4,14 @@ namespace App\Http\Livewire\Admins;
 
 use Livewire\Component;
 use App\Models\block;
+use Livewire\WithPagination;
+
 class Blocks extends Component
 {
+    use WithPagination;
+
+    protected $paginationTheme = 'bootstrap';
+
     public $blockfloor;
     public $blockcode;
 
@@ -83,7 +89,7 @@ class Blocks extends Component
     public function render()
     {
         return view('livewire.admins.blocks',[
-            'blocks' =>block::all()
+            'blocks' =>block::latest()->paginate(10)
         ])->layout('admins.layouts.app');
     }
 }

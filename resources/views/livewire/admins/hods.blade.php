@@ -66,6 +66,7 @@
                             @endforelse
                             </tbody>
                     </table>
+                    {{ $hods->links() }}
                 </div>
      </div>
 </div>

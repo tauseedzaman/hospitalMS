@@ -78,6 +78,7 @@
                             @endforelse
                             </tbody>
                     </table>
+                    {{ $medicines->links() }}
                 </div>
      </div>
 </div>

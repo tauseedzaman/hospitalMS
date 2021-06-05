@@ -98,7 +98,7 @@ class Bills extends Component
     public function render()
     {
         return view('livewire.admins.bills',[
-            'bills' =>bill::latest()->paginate(15),
+            'bills' =>bill::latest()->paginate(10),
             'patients' =>patient::all()
         ])->layout('admins.layouts.app');
     }

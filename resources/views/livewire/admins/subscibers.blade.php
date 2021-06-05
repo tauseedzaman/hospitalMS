@@ -47,6 +47,7 @@
                             @endforelse
                             </tbody>
                     </table>
+                    {{ $subscribers->links() }}
                 </div>
      </div>
 </div>

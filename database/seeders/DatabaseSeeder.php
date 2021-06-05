@@ -63,6 +63,8 @@ class DatabaseSeeder extends Seeder
             contactSeeder::class,
             roomSeeder::class,
             bedsSeeder::class,
+            billSeeder::class,
+            medicineSeeder::class,
             ]);
 
         // \App\Models\User::factory(10)->create();

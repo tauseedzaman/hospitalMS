@@ -72,6 +72,7 @@
                             @endforelse
                             </tbody>
                     </table>
+                    {{ $blocks->links() }}
                 </div>
      </div>
 </div>

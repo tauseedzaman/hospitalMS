@@ -4,9 +4,13 @@ namespace App\Http\Livewire\Admins;
 use App\Models\hod;
 use App\Models\doctor;
 use Livewire\Component;
+use Livewire\WithPagination;
 
 class Hods extends Component
 {
+    use WithPagination;
+
+    protected $paginationTheme = 'bootstrap';
 
     public $doctor;
 
@@ -77,7 +81,7 @@ class Hods extends Component
     {
         return view('livewire.admins.hods',[
             'doctors' => doctor::all(),
-            'hods' => hod::all(),
+            'hods' => hod::latest()->paginate(10),
         ])->layout('admins.layouts.app');
     }
 }

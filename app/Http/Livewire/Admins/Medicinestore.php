@@ -4,8 +4,13 @@ namespace App\Http\Livewire\Admins;
 
 use Livewire\Component;
 use \App\Models\medicine;
+use Livewire\WithPagination;
+
 class Medicinestore extends Component
 {
+    use WithPagination;
+
+    protected $paginationTheme = 'bootstrap';
 
     public $price;
     public $quantity;
@@ -96,7 +101,7 @@ class Medicinestore extends Component
     public function render()
     {
         return view('livewire.admins.medicinestore',[
-            'medicines' => medicine::all()
+            'medicines' => medicine::latest()->paginate(10)
         ])->layout('admins.layouts.app');
     }
 }
