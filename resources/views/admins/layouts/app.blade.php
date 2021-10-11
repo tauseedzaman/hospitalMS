@@ -6,7 +6,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Admin Laravel</title>
+    <title>Admin Area</title>
     <link href="http://127.0.0.1:8000/assets/vendor/fontawesome/css/fontawesome.min.css" rel="stylesheet">
     <link href="http://127.0.0.1:8000/assets/vendor/fontawesome/css/solid.min.css" rel="stylesheet">
     <link href="http://127.0.0.1:8000/assets/vendor/fontawesome/css/brands.min.css" rel="stylesheet">
@@ -47,19 +47,7 @@
                     <a href="{{ route('admin_patients') }}"><i class="fas fa-file-alt"></i>Patients</a>
                 </li>
                 <li>
-                    <a href="{{ route('nurses') }}"><i class="fas fa-file-alt"></i>Nurses</a>
-                </li>
-                <li>
                     <a href="{{ route('employees') }}"><i class="fas fa-file-alt"></i>Employees</a>
-                </li>
-                <li>
-                    <a href="{{ route('departments') }}"><i class="fas fa-file-alt"></i>Department</a>
-                </li>
-                <li>
-                    <a href="{{ route('Rooms') }}"><i class="fas fa-file-alt"></i>Rooms</a>
-                </li>
-                <li>
-                    <a href="{{ route('patients_beds') }}"><i class="fas fa-file-alt"></i>Beds</a>
                 </li>
                 <li>
                     <a href="{{ route('patient_bills') }}"><i class="fas fa-file-alt"></i>Bills</a>
@@ -69,44 +57,15 @@
                     <a href="{{ route('medicinesStore') }}"><i class="fas fa-file-alt"></i>Medicines Store</a>
                 </li>
                 <li>
-                    <a href="{{ route('hods') }}"><i class="fas fa-file-alt"></i>HOD's</a>
-                </li>
-                <li>
-                    <a href="{{ route('blocks') }}"><i class="fas fa-file-alt"></i>Blocks</a>
-                </li>
-                <li>
                     <a href="{{ route('requestedAppointment') }}"><i class="fas fa-file-alt"></i>Appointment
                         Requests</a>
-                </li>
-                <li>
-                    <a href="{{ route('subscibers') }}"><i class="fas fa-file-alt"></i>Subscribers</a>
                 </li>
                 <li>
                     <a href="{{ route('contactedus') }}"><i class="fas fa-file-alt"></i>Contacted Messages</a>
                 </li>
                 <li>
-                    <a href="#authmenu" data-toggle="collapse" aria-expanded="false"
-                        class="dropdown-toggle no-caret-down"><i class="fas fa-user-shield"></i> Authentication</a>
-                    <ul class="collapse list-unstyled" id="authmenu">
-                        <li>
-                            <a href="login.html"><i class="fas fa-lock"></i> Login</a>
-                        </li>
-
-                        <li>
-                            <a href="forgot-password.html"><i class="fas fa-user-lock"></i> Forgot password</a>
-                        </li>
-                    </ul>
-                </li>
-                <li>
                     <a href="{{ route('admin_settings') }}"><i class="fas fa-cog"></i>Settings</a>
                 </li>
-                {{-- @endauth --}}
-                {{-- @guest --}}
-                <li>
-                    <a href="signup.html"><i class="fas fa-user-plus"></i> Signup</a>
-                </li>
-                {{-- @endguest --}}
-
             </ul>
         </nav>
         <div id="body" class="active">
@@ -117,24 +76,6 @@
                     <ul class="nav navbar-nav ml-auto">
                         <li class="nav-item dropdown">
                             <div class="nav-dropdown">
-                                <a href="" class="nav-item nav-link dropdown-toggle text-secondary"
-                                    data-toggle="dropdown"><i class="fas fa-link"></i> <span>Quick Access</span> <i
-                                        style="font-size: .8em;" class="fas fa-caret-down"></i></a>
-                                <div class="dropdown-menu dropdown-menu-right nav-link-menu">
-                                    <ul class="nav-list">
-                                        <li><a href="" class="dropdown-item"><i class="fas fa-list"></i> Access Logs</a>
-                                        </li>
-                                        <div class="dropdown-divider"></div>
-                                        <li><a href="" class="dropdown-item"><i class="fas fa-database"></i> Back
-                                                ups</a></li>
-                                        <div class="dropdown-divider"></div>
-                                        <li><a href="" class="dropdown-item"><i class="fas fa-cloud-download-alt"></i>
-                                                Updates</a></li>
-                                        <div class="dropdown-divider"></div>
-                                        <li><a href="" class="dropdown-item"><i class="fas fa-user-shield"></i>
-                                                Roles</a></li>
-                                    </ul>
-                                </div>
                             </div>
                         </li>
                         <li class="nav-item dropdown">
@@ -145,12 +86,6 @@
                                         class="fas fa-caret-down"></i></a>
                                 <div class="dropdown-menu dropdown-menu-right nav-link-menu">
                                     <ul class="nav-list">
-                                        <li><a href="" class="dropdown-item"><i class="fas fa-address-card"></i>
-                                                Profile</a></li>
-                                        <li><a href="" class="dropdown-item"><i class="fas fa-envelope"></i>
-                                                Messages</a></li>
-                                        <li><a href="" class="dropdown-item"><i class="fas fa-cog"></i> Settings</a>
-                                        </li>
                                         <div class="dropdown-divider"></div>
                                         <li><a href="{{ route('login') }}" class="dropdown-item"><i
                                                     class="fas fa-sign-out-alt"></i> Logout</a></li>

@@ -15,6 +15,7 @@ class CreateLaboratoristsTable extends Migration
     {
         Schema::create('laboratorists', function (Blueprint $table) {
             $table->id();
+            $table->string("urn");
             $table->timestamps();
         });
     }

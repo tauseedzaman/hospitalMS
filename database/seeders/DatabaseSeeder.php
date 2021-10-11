@@ -49,23 +49,23 @@ class DatabaseSeeder extends Seeder
         //     'created_at' =>now(),
         // ]);
 
-        $this->call([
-            employeeSeeder::class,
-            patientSeeder::class,
-            blockSeeder::class,
-            departmentSeeder::class,
-            hodSeeder::class,
-            doctorSeeder::class,
-            nurseSeeder::class,
-            birthreportSeeder::class,
-            operationreportSeeder::class,
-            subscriberSeeder::class,
-            contactSeeder::class,
-            roomSeeder::class,
-            bedsSeeder::class,
-            billSeeder::class,
-            medicineSeeder::class,
-            ]);
+        // $this->call([
+        //     employeeSeeder::class,
+        //     patientSeeder::class,
+        //     blockSeeder::class,
+        //     departmentSeeder::class,
+        //     hodSeeder::class,
+        //     doctorSeeder::class,
+        //     nurseSeeder::class,
+        //     birthreportSeeder::class,
+        //     operationreportSeeder::class,
+        //     subscriberSeeder::class,
+        //     contactSeeder::class,
+        //     roomSeeder::class,
+        //     bedsSeeder::class,
+        //     billSeeder::class,
+        //     medicineSeeder::class,
+        //     ]);
 
         // \App\Models\User::factory(10)->create();
     }

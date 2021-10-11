@@ -22,8 +22,7 @@
          <!-- end col -->
          <div class="col-md-6">
             <div class="post-media wow fadeIn">
-               <img src="images/about_03.jpg" alt="" class="img-responsive">
-               <a href="http://www.youtube.com/watch?v=nrJtHemSPW4" data-rel="prettyPhoto[gal]" class="playbutton"><i class="flaticon-play-button"></i></a>
+               <img src="images/zmhsd.jpeg" alt="" class="img-responsive">
             </div>
             <!-- end media -->
          </div>

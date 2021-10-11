@@ -64,12 +64,12 @@
                         <div class="info-inner">
                             <span class="icontop"><i class="fa fa-envelope" aria-hidden="true"></i></span>
                             <span class="iconcont"><a data-scroll
-                                    href="mailto:{{ $app ? $app->business_email : 'tauseed@test.com' }}">{{ $app ? $app->business_email : 'tauseed@test.com' }}</a></span>
+                                    href="mailto:{{ $app ? $app->business_email : 'zmhdargai@gmail.com' }}">{{ $app ? $app->business_email : 'tauseed@test.com' }}</a></span>
                         </div>
                         <div class="info-inner">
                             <span class="icontop"><i class="fa fa-clock-o" aria-hidden="true"></i></span>
                             <span class="iconcont"><a data-scroll href="#">Daily:
-                                    {{ $app ? $app->working_horse : '7:00 AM - 8:00 PM' }}</a></span>
+                                    {{ $app ? $app->working_horse : '   7:00 AM - 8:00 PM' }}</a></span>
                         </div>
                     </div>
                 </div>
@@ -90,9 +90,7 @@
                             <li onclick="check_active('Services')"><a id="Services" data-scroll
                                     href="{{ url('/services') }}">Services</a></li>
                             <li onclick="check_active('Doctors')"><a id="Doctors" data-scroll
-                                    href="{{ url('docters') }}">Doctors</a></li>
-                            <li onclick="check_active('Departments')"><a id="Departments" data-scroll
-                                    href="#departments">Departments</a></li>
+                                    href="{{ url('docters') }}">Register</a></li>
                             <li onclick="check_active('About')"><a id="About" data-scroll
                                     href="{{ url('/about') }}">About us</a></li>
                             <li onclick="check_active('Contact')"><a id="Contact" data-scroll
@@ -139,7 +137,6 @@
                                 aria-hidden="true"></i>{{ $app ? $app->business_phone : '123 123 123' }}</p>
                     </div>
                 </div>
-                @livewire('subscribe')
             </div>
         </div>
     </footer>
@@ -167,10 +164,7 @@
             </div>
         </div>
     </div>
-    <!-- end copyrights -->
 
-    <!-- all js files -->
-    {{-- <script src="js/all.js"></script> --}}
     <script src="js/all-in-one.js"></script>
     <!-- all plugins -->
     <script src="js/custom.js"></script>
