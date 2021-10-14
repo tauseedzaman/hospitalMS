@@ -1,7 +1,8 @@
 <div id="getintouch" class="section wb wow fadeIn" style="padding-bottom:0;">
     <div class="container">
         <div class="heading">
-            <span class="icon-logo"><img src="images/icon-logo.png" alt="#"></span>
+            {{-- {{ dd($app->logo_path) }} --}}
+            <span class="icon-logo"><img src="{{ App\Models\general_settings::latest()->first() ? config('app.url') . 'storage/' . App\Models\general_settings::latest()->first()->favicon_path :  config("app.url").'images/favicon.png' }}" alt="#"></span>
             <h2>Get in Touch</h2>
         </div>
     </div>

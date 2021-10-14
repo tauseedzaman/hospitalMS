@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\doctorController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -12,10 +13,8 @@ Route::get('/about', function () {
 Route::get('/contact', function () {
     return view('contact');
 });
-Route::get("/docters",function ()
-{
-    return view('docter');
-});
+Route::get("/docters",[doctorController::class,'index']);
+
 Route::get('/app', function () {
     return view('layouts.app');
 });
@@ -30,7 +29,7 @@ Route::middleware(['auth','checksuperadmin'])->group(function () {
 
     Route::prefix('admin')->group(function () {
         Route::get('settings',App\Http\Livewire\Admins\Settings::class)->name('admin_settings');
-        Route::get('/register',App\Http\Livewire\Admins\Docter::class)->name('admin_docters');
+        Route::get('/doctors',App\Http\Livewire\Admins\Docter::class)->name('admin_docters');
         Route::get('/operationsreport',App\Http\Livewire\Admins\operationreport::class)->name('admin_operations_report');
         Route::get('/patients',App\Http\Livewire\Admins\Patients::class)->name('admin_patients');
         Route::get('/birthsreport',App\Http\Livewire\Admins\birthreport::class)->name('admin_birth_report');

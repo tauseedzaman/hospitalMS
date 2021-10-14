@@ -90,7 +90,7 @@
                             <li onclick="check_active('Services')"><a id="Services" data-scroll
                                     href="{{ url('/services') }}">Services</a></li>
                             <li onclick="check_active('Doctors')"><a id="Doctors" data-scroll
-                                    href="{{ url('docters') }}">Register</a></li>
+                                    href="{{ url('docters') }}">Doctors</a></li>
                             <li onclick="check_active('About')"><a id="About" data-scroll
                                     href="{{ url('/about') }}">About us</a></li>
                             <li onclick="check_active('Contact')"><a id="Contact" data-scroll
@@ -128,10 +128,10 @@
                     <div class="footer-info padding">
                         <h3>CONTACT US</h3>
                         <p><i class="fa fa-map-marker"
-                                aria-hidden="true"></i>{{ $app ? $app->address : 'distric abc P/O xyz sorana' }}
+                                aria-hidden="true"></i>{{ $app ? $app->address : 'distric abc P/O xyz test' }}
                         </p>
                         <p><i class="fa fa-paper-plane"
-                                aria-hidden="true"></i>{{ $app ? $app->business_email : 'tauseed@test.com' }}
+                                aria-hidden="true"></i>{{ $app ? $app->business_email : 'test@test.com' }}
                         </p>
                         <p><i class="fa fa-phone"
                                 aria-hidden="true"></i>{{ $app ? $app->business_phone : '123 123 123' }}</p>
@@ -152,12 +152,9 @@
                 <div class="col-md-4">
                     <div class="social">
                         <ul class="social-links">
-                            <li><a href=""><i class="fa fa-rss"></i></a></li>
-                            <li><a href=""><i class="fa fa-facebook"></i></a></li>
-                            <li><a href=""><i class="fa fa-twitter"></i></a></li>
-                            <li><a href=""><i class="fa fa-google-plus"></i></a></li>
-                            <li><a href=""><i class="fa fa-youtube"></i></a></li>
-                            <li><a href=""><i class="fa fa-pinterest"></i></a></li>
+                            <li><a href="https://facebook.com/"><i class="fa fa-facebook"></i></a></li>
+                            <li><a href="https://twitter.com/"><i class="fa fa-twitter"></i></a></li>
+                            <li><a href="https://youtube.com/"><i class="fa fa-youtube"></i></a></li>
                         </ul>
                     </div>
                 </div>

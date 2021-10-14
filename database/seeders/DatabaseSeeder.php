@@ -49,13 +49,13 @@ class DatabaseSeeder extends Seeder
         //     'created_at' =>now(),
         // ]);
 
-        // $this->call([
+        $this->call([
         //     employeeSeeder::class,
         //     patientSeeder::class,
         //     blockSeeder::class,
         //     departmentSeeder::class,
         //     hodSeeder::class,
-        //     doctorSeeder::class,
+            doctorSeeder::class,
         //     nurseSeeder::class,
         //     birthreportSeeder::class,
         //     operationreportSeeder::class,
@@ -65,7 +65,7 @@ class DatabaseSeeder extends Seeder
         //     bedsSeeder::class,
         //     billSeeder::class,
         //     medicineSeeder::class,
-        //     ]);
+            ]);
 
         // \App\Models\User::factory(10)->create();
     }
