@@ -17,7 +17,7 @@ class medicineSeeder extends Seeder
             medicine::create([
                 'price'          => rand(100,5000),
                 'quantity'          => rand(5,50),
-                'code ' => '12345DFG'
+                'code' => '12345DFG'
             ]);
     }
     }
