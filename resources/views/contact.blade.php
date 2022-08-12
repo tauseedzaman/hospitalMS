@@ -2,5 +2,5 @@
 
 @section('content')
 <br><br><br>
-@livewire('cotactus')
+@livewire('contactus')
 @endsection
