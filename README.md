@@ -27,4 +27,6 @@
     </ul>
     <p style="color:yellow">If you like our project please leave a star ❤<p>
 
+    [For Online Demo Click Me](https://hospital-management-system.tauseedzaman.com/)
+
 
