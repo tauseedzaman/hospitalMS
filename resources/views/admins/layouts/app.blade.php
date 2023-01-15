@@ -7,13 +7,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Admin Laravel</title>
-    <link href="http://127.0.0.1:8000/assets/vendor/fontawesome/css/fontawesome.min.css" rel="stylesheet">
-    <link href="http://127.0.0.1:8000/assets/vendor/fontawesome/css/solid.min.css" rel="stylesheet">
-    <link href="http://127.0.0.1:8000/assets/vendor/fontawesome/css/brands.min.css" rel="stylesheet">
-    <link href="http://127.0.0.1:8000/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-    <link href="http://127.0.0.1:8000/assets/css/master.css" rel="stylesheet">
-    {{-- <link href="http://127.0.0.1:8000/assets/vendor/chartsjs/Chart.min.css" rel="stylesheet"> --}}
-    <link href="http://127.0.0.1:8000/assets/vendor/flagiconcss/css/flag-icon.min.css" rel="stylesheet">
+    <link href="{{  config('app.url') }}assets/vendor/fontawesome/css/fontawesome.min.css" rel="stylesheet">
+    <link href="{{  config('app.url') }}assets/vendor/fontawesome/css/solid.min.css" rel="stylesheet">
+    <link href="{{  config('app.url') }}assets/vendor/fontawesome/css/brands.min.css" rel="stylesheet">
+    <link href="{{  config('app.url') }}assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="{{  config('app.url') }}assets/css/master.css" rel="stylesheet">
+    {{-- <link href="{{  config('app.url') }}assets/vendor/chartsjs/Chart.min.css" rel="stylesheet"> --}}
+    <link href="{{  config('app.url') }}assets/vendor/flagiconcss/css/flag-icon.min.css" rel="stylesheet">
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -170,13 +170,13 @@
                     @yield('admin_content')
                     @livewireScripts
 
-                    <script src="http://127.0.0.1:8000/js/livewire-turbolinks.js"></script>
-                    <script src="http://127.0.0.1:8000/js/alpine.js"></script>
-                    <script src="http://127.0.0.1:8000/assets/vendor/jquery/jquery.min.js"></script>
-                    <script src="http://127.0.0.1:8000/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-                    {{-- <script src="http://127.0.0.1:8000/assets/vendor/chartsjs/Chart.min.js"></script> --}}
-                    {{-- <script src="http://127.0.0.1:8000/assets/js/dashboard-charts.js"></script> --}}
-                    <script src="http://127.0.0.1:8000/assets/js/script.js"></script>
+                    <script src="{{  config('app.url') }}js/livewire-turbolinks.js"></script>
+                    <script src="{{  config('app.url') }}js/alpine.js"></script>
+                    <script src="{{  config('app.url') }}assets/vendor/jquery/jquery.min.js"></script>
+                    <script src="{{  config('app.url') }}assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+                    {{-- <script src="{{  config('app.url') }}assets/vendor/chartsjs/Chart.min.js"></script> --}}
+                    {{-- <script src="{{  config('app.url') }}assets/js/dashboard-charts.js"></script> --}}
+                    <script src="{{  config('app.url') }}assets/js/script.js"></script>
 </body>
 
 </html>
