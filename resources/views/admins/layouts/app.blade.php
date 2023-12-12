@@ -85,28 +85,8 @@
                     <a href="{{ route('contactedus') }}"><i class="fas fa-file-alt"></i>Contacted Messages</a>
                 </li>
                 <li>
-                    <a href="#authmenu" data-toggle="collapse" aria-expanded="false"
-                        class="dropdown-toggle no-caret-down"><i class="fas fa-user-shield"></i> Authentication</a>
-                    <ul class="collapse list-unstyled" id="authmenu">
-                        <li>
-                            <a href="login.html"><i class="fas fa-lock"></i> Login</a>
-                        </li>
-
-                        <li>
-                            <a href="forgot-password.html"><i class="fas fa-user-lock"></i> Forgot password</a>
-                        </li>
-                    </ul>
-                </li>
-                <li>
                     <a href="{{ route('admin_settings') }}"><i class="fas fa-cog"></i>Settings</a>
                 </li>
-                {{-- @endauth --}}
-                {{-- @guest --}}
-                <li>
-                    <a href="signup.html"><i class="fas fa-user-plus"></i> Signup</a>
-                </li>
-                {{-- @endguest --}}
-
             </ul>
         </nav>
         <div id="body" class="active">
