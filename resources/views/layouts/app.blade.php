@@ -76,7 +76,7 @@
             </div>
         </div>
         <div class="header-bottom wow fadeIn">
-            <div class="container">
+            <div class="container-fluid">
                 <nav class="main-menu">
                     <div class="navbar-header">
                         <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
@@ -103,11 +103,10 @@
                                             href="{{ route('admin_settings') }}">Admin Area</a></li>
                                 @endif
                             @endauth
-
                         </ul>
                     </div>
                 </nav>
-               @livewire('search')
+                @livewire('search')
             </div>
         </div>
     </header>
