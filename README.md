@@ -24,8 +24,12 @@
     <li> > php artisan migrate:fresh --seed</li>
     <li> > php artisan serve</li>
     <li> <a href="http://127.0.0.1:8000/">http://127.0.0.1:8000/</a> </li>
-    </ul>
-    <p style="color:yellow">If you like our project please leave a star ❤<p>
+</ul>
+
+<h3>Admin Cred.</h3>
+<p>Admin:```tauseed@test.com```, password:```tauseed```</p>
+
+<p style="color:yellow">If you like our project please leave a star ❤<p>
 
 
 `
