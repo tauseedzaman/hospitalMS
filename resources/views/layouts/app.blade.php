@@ -170,9 +170,9 @@
 
     <!-- all js files -->
     {{-- <script src="js/all.js"></script> --}}
-    <script src="js/all-in-one.js"></script>
+    <script src="{{ asset('js/all-in-one.js') }}"></script>
     <!-- all plugins -->
-    <script src="js/custom.js"></script>
+    <script src="{{ asset('js/custom.js') }}"></script>
     <script>
         function check_active(d) {
             document.getElementById(d).addAttribute('class', 'active');
