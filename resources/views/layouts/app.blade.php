@@ -110,7 +110,7 @@
             </div>
         </div>
     </header>
-    <main class="py-4">
+    <main id="main">
         @yield('content')
     </main>
     <a href="#home" data-scroll class="dmtop global-radius"><i class="fa fa-angle-up"></i></a>

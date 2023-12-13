@@ -2,8 +2,7 @@
 
 @section('content')
 <div id="about" class="section  wow fadeIn">
-    <br><br><br><br>
-   <div class="container">
+    <div class="container">
       <div class="heading">
          <span class="icon-logo"><img src="images/icon-logo.png" alt="#"></span>
          <h2>The Specialist Clinic</h2>
