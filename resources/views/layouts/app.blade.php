@@ -76,7 +76,7 @@
             </div>
         </div>
         <div class="header-bottom wow fadeIn">
-            <div class="container">
+            <div class="container-fluid">
                 <nav class="main-menu">
                     <div class="navbar-header">
                         <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
@@ -103,15 +103,14 @@
                                             href="{{ route('admin_settings') }}">Admin Area</a></li>
                                 @endif
                             @endauth
-
                         </ul>
                     </div>
                 </nav>
-               @livewire('search')
+                @livewire('search')
             </div>
         </div>
     </header>
-    <main class="py-4">
+    <main id="main">
         @yield('content')
     </main>
     <a href="#home" data-scroll class="dmtop global-radius"><i class="fa fa-angle-up"></i></a>
@@ -171,9 +170,9 @@
 
     <!-- all js files -->
     {{-- <script src="js/all.js"></script> --}}
-    <script src="js/all-in-one.js"></script>
+    <script src="{{ asset('js/all-in-one.js') }}"></script>
     <!-- all plugins -->
-    <script src="js/custom.js"></script>
+    <script src="{{ asset('js/custom.js') }}"></script>
     <script>
         function check_active(d) {
             document.getElementById(d).addAttribute('class', 'active');

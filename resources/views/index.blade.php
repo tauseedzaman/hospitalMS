@@ -1,7 +1,5 @@
 @extends('layouts.app')
 @section('content')
-@livewireStyles
-@livewireScripts
 <div id="home" class="parallax first-section wow fadeIn" data-stellar-background-ratio="0.4" style="background-image:url('images/slider-bg.png');" {{ $app = App\Models\general_settings::latest()->first() }}>
    <div class="container">
       <div class="row">

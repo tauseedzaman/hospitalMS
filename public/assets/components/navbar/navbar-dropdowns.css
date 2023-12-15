@@ -68,3 +68,8 @@
 .nav-dropdown .dropdown-divider {
     margin: 3px 0;
 }
+button.dropdown-item.logout-button {
+    color: #888;
+    font-size: 14px;
+    padding: 0.8rem;
+}

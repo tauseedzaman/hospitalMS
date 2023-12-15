@@ -1,11 +1,6 @@
 @extends('layouts.app')
 
 @section('content')
-<br>
-<br>
-<br>
-<br>
-<br>
 <div id="service" class="services wow fadeIn">
     <div class="container">
        <div class="row">
