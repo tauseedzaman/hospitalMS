@@ -33,17 +33,18 @@
                                 @endforelse
 
                             </select>
-                            @error('patient') <span class="text-red-500 text-danger text-xs">{{ $message }}</span>
+                            @error('patient')
+                                <span class="text-red-500 text-danger text-xs">{{ $message }}</span>
                             @enderror
                         </div>
 
                         <div class="form-group">
                             <label for="Details">Details</label>
-                            <textarea name="Details" id="Details" wire:model.lazy="details"
-                                placeholder="Enter operation Details" class="form-control" required cols="30"
-                                rows="5"></textarea>
+                            <textarea name="Details" id="Details" wire:model.lazy="details" placeholder="Enter operation Details"
+                                class="form-control" required cols="30" rows="5"></textarea>
                         </div>
-                        @error('details') <span class="text-red-500 text-danger text-xs">{{ $message }}</span>
+                        @error('details')
+                            <span class="text-red-500 text-danger text-xs">{{ $message }}</span>
                         @enderror
 
                         <div class="form-group">
@@ -56,7 +57,8 @@
                                     <option value="" class="text-warning">No Doctor Found!</option>
                                 @endforelse
                             </select>
-                            @error('doctor') <span class="text-red-500 text-danger text-xs">{{ $message }}</span>
+                            @error('doctor')
+                                <span class="text-red-500 text-danger text-xs">{{ $message }}</span>
                             @enderror
                         </div>
                         <div class="form-group">
@@ -64,7 +66,8 @@
                             <input type="time" name="time" id="time" wire:model.lazy="time"
                                 placeholder="Enter operation time" class="form-control" required />
                         </div>
-                        @error('time') <span class="text-red-500 text-danger text-xs">{{ $message }}</span>
+                        @error('time')
+                            <span class="text-red-500 text-danger text-xs">{{ $message }}</span>
                         @enderror
                         <div class="form-group">
                             <input type="submit" class="btn btn-primary" value="{{ $button_text }}">
@@ -72,7 +75,7 @@
                     </form><br>
                     <hr>
                     <div class="text-capitalize bg-dark p-2 shadow mb-3 text-center text-lg text-light rounded">
-                        {{ _('All  operationReports') }}</div>
+                        {{ __('All  operationReports') }}</div>
                     <table class="table table-hover" style="" id="">
                         <thead>
                             <tr>
