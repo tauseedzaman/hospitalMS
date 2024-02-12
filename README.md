@@ -1,38 +1,68 @@
-<h1 style="color:blue">Hospital Mangment System Made with Laravel 8</h1>
-<h3>Front End</h3>
+# Hospital Management System
 
-<img src="FrontEnd.png" />
+![Front End](FrontEnd.png)
 
-<h3>Back End</h3>
+## Front End
 
-<img src="admin-screenshot.png" />
+![Front End](FrontEnd.png)
 
-<h3>Database Tables</h3>
+## Back End
 
-<img src="Tables_Screenshot.png" />
+![Back End](admin-screenshot.png)
 
-<h2 style="color:cyan">Installation</h2>
-<ul>
-    <li>Clone the Repo: <br> </li>
-    <li style=""> > git clone https://github.com/tauseedzaman/hospitalMS.git</li>
-    <li> > cd hospitalMS</li>
-    <li> > composer install or composer update</li>
-    <li> > cp .env.example .env</li>
-    <li> > Set up .env file</li>
-    <li> > php artisan key:generate</li>
-    <li> > php artisan storage:link</li>
-    <li> > php artisan migrate:fresh --seed</li>
-    <li> > php artisan serve</li>
-    <li> <a href="http://127.0.0.1:8000/">http://127.0.0.1:8000/</a> </li>
-</ul>
+## Database Tables
 
-<h3>Admin Cred.</h3>
-- Admin: tauseed@test.com , password: tauseed 
+![Database Tables](Tables_Screenshot.png)
 
-<p style="color:yellow">If you like our project please leave a star ❤<p>
+## Installation
 
+Follow these instructions to set up and run the project locally on your machine.
 
-`
-    [For Online Demo Click Me](https://hospital-management-system.tauseedzaman.com)
+### Prerequisites
 
+- [Git](https://git-scm.com/)
+- [Composer](https://getcomposer.org/)
+- [PHP](https://www.php.net/)
+
+### Installation
+
+1. Clone the repository:
+
+```bash
+   git clone https://github.com/tauseedzaman/hospitalMS.git
+```
+ ```bash
+   cd hospitalMS
+```
+
+ ```bash
+composer install
+```
+ ```bash
+cp .env.example .env
+```
+```bash
+php artisan key:generate
+ ```
+```bash
+php artisan storage:link
+```
+ ```bash
+ php artisan migrate:fresh --seed
+```
+ ```bash
+ php artisan serve
+```
+
+## Admin Credentials
+Admin: 
+```bash 
+tauseed@test.com
+```
+Password: 
+```bash
+tauseed
+```
+
+## If you like our project please leave a star ❤
 
