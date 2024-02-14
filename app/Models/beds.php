@@ -11,8 +11,7 @@ class beds extends Model
     protected $fillable=[
         'room_id',
         'patient_id',
-        'alloted_time',
-        'discharge_time',
+        'status',
     ];
 
     public function room()

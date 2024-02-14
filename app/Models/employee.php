@@ -8,14 +8,17 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 class employee extends Model
 {
-    use HasFactory,SoftDeletes;
-    protected $fillable=[
-        'name',
-        'email',
-        'phone',
-        'address',
-        'gender',
-        'job',
-        'salary',
+    use HasFactory, SoftDeletes;
+    protected $fillable = [
+        "name",
+        "email",
+        "phone",
+        "salary",
+        "address",
+        "qualification",
+        "position",
+        "status",
+        "image",
     ];
+
 }

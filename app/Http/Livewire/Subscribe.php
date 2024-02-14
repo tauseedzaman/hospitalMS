@@ -4,6 +4,7 @@ namespace App\Http\Livewire;
 
 use Livewire\Component;
 use App\Models\subscriber as submodel;
+
 class Subscribe extends Component
 {
 
@@ -13,16 +14,16 @@ class Subscribe extends Component
     {
         $this->validate([
             'email' => 'required|email|unique:subscribers,email,except,id',
-            ]);
+        ]);
 
-        submodel::create([
+        subscriber::create([
             'email'         => $this->email,
         ]);
 
-           //unset variables
-           $this->email="";
+        //unset variables
+        $this->email = "";
 
-           session()->flash('message', 'Email Added successfully.');
+        session()->flash('message', 'Email Added successfully.');
     }
 
     public function render()

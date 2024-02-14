@@ -15,14 +15,7 @@ class CreateDoctorsTable extends Migration
     {
         Schema::create('doctors', function (Blueprint $table) {
             $table->id();
-            $table->string("name");
-            $table->string('email');
-            $table->string('password');
-            $table->string('address');
-            $table->string('phone');
-            $table->string('department');
-            $table->string("specialization");
-            $table->string("photo_path");
+            $table->foreignId("employee_id")->constrained();
             $table->timestamps();
             $table->softDeletes();
         });

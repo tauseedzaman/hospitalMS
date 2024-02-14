@@ -2,8 +2,10 @@
 
 namespace App\Models;
 
+use App\Http\Livewire\Admins\Blocks;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class department extends Model
 {
@@ -14,7 +16,7 @@ class department extends Model
         'description',
         'photo_path',
         'block_id',
-        'hod_id', //head of department
+        'hod_id', 
     ];
 
     public function rooms()
@@ -29,7 +31,7 @@ class department extends Model
      */
     public function block(): BelongsTo
     {
-        return $this->belongsTo(blocks::class);
+        return $this->belongsTo(Blocks::class);
     }
 
     /**

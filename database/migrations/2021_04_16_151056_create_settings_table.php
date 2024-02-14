@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreatePharmacistsTable extends Migration
+class CreateGeneralSettingsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,12 @@ class CreatePharmacistsTable extends Migration
      */
     public function up()
     {
-        Schema::create('pharmacists', function (Blueprint $table) {
+        Schema::create('settings', function (Blueprint $table) {
             $table->id();
+            $table->string('key');
+            $table->string('value');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 
@@ -26,6 +29,6 @@ class CreatePharmacistsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('pharmacists');
+        Schema::dropIfExists('general_settings');
     }
 }

@@ -38,7 +38,6 @@
     <script src="js/modernizer.js"></script>
     <!-- [if lt IE 9] -->
     @livewireStyles
-    @livewireScripts
 </head>
 
 <body class="clinic_version">
@@ -167,7 +166,7 @@
         </div>
     </div>
     <!-- end copyrights -->
-
+    @livewireScripts
     <!-- all js files -->
     {{-- <script src="js/all.js"></script> --}}
     <script src="{{ asset('js/all-in-one.js') }}"></script>

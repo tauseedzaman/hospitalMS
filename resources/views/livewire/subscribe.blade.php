@@ -5,7 +5,7 @@
         <div class="subcriber-box">
             <form id="mc-form" class="mc-form" wire:submit.prevent="add_subscriber">
                 <div class="newsletter-form">
-                    <input type="email" wire:model.lazy="email" autocomplete="off" id="mc-email" placeholder="Email address"
+                    <input type="email" wire:model="email" autocomplete="off" id="mc-email" placeholder="Email address"
                         class="form-control" name="email">
                     <button class="mc-submit" type="submit"><i class="fa fa-paper-plane"></i></button>
                     <div class="clearfix"></div>

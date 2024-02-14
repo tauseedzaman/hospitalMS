@@ -15,6 +15,10 @@ class CreatePatientCheckupsTable extends Migration
     {
         Schema::create('patient_checkups', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('patient_id')->constrained();
+            $table->foreignId('doctor_id')->constrained();
+            $table->string('description');
+            $table->enum('status', ['pending', 'completed'])->default('pending');
             $table->timestamps();
         });
     }

@@ -17,8 +17,8 @@ class CreateRoomsTable extends Migration
         Schema::create('rooms', function (Blueprint $table) {
             $table->id();
             $table->foreignId('department_id')->constrained();
-            $table->string('roomtype', 100)->nullable()->default('text');
-            $table->boolean('available')->nullable()->default(false);
+            $table->enum('status', ['available', 'occupied', 'maintenance'])->default('available');
+            $table->enum('type', ['ward', 'private', 'semi-private', 'general'])->default('general');
             $table->timestamps();
             $table->softDeletes();
         });

@@ -10,7 +10,10 @@ class bill extends Model
     use HasFactory;
     protected $fillable=[
         'patients_id',
-        'amount',
-        'payed',
+        'status',
     ];
+
+    public function patient(){
+        return $this->belongsTo(patient::class);
+    }
 }

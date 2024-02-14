@@ -10,13 +10,6 @@ class doctor extends Model
 {
     use HasFactory,SoftDeletes;
     protected $fillable=[
-        'name',
-        'email',
-        'password',
-        'address',
-        'phone',
-        'department',
-        'specialization',
-        'photo_path',
+        'employee_id',
     ];
 }

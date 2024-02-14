@@ -15,6 +15,11 @@ class CreatePaymentsTable extends Migration
     {
         Schema::create('payments', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('patient_id')->constrained();
+            $table->foreignId('bill_id')->constrained();
+            $table->string('amount');
+            $table->enum('status', ['paid', 'unpaid'])->default('unpaid');
+            $table->enum('mode', ['cash', 'card', 'cheque', 'online'])->default('cash');
             $table->timestamps();
         });
     }

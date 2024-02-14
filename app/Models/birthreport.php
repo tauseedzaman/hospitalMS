@@ -10,8 +10,17 @@ class birthreport extends Model
 {
     use HasFactory,SoftDeletes;
     protected $fillable=[
-        'patient',
+        'patient_id',
+        'doctor_id',
         'description',
-        'doctor',
+        'gender',
     ];
+
+    public function patient(){
+        return $this->belongsTo(patient::class);
+    }
+
+    public function doctor(){
+        return $this->belongsTo(doctor::class);
+    }
 }

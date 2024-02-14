@@ -20,7 +20,7 @@ class CreateRequestedAppointmentsTable extends Migration
             $table->string('phone',13);
             $table->string('address',150);
             $table->string('doctor');
-            $table->string('message', 600)->default('text');
+        $table->string('message', 600)->default('text');
             $table->timestamp('stime')->nullable();
             $table->timestamps();
             $table->softDeletes();

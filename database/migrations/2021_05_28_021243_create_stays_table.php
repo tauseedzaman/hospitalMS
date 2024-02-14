@@ -19,6 +19,10 @@ class CreateStaysTable extends Migration
             $table->foreignId('room_id')->constrained();
             $table->string('start_time')->nullable()->default(time());
             $table->string('end_time')->nullable()->default(time());
+            $table->enum('status', ['active', 'completed'])->default('active');
+            $table->string('amount')->nullable();
+            $table->string('discount')->nullable();
+            $table->string('total')->nullable();
             $table->timestamps();
         });
     }
