@@ -22,6 +22,6 @@ class rooms extends Model
 
     public function beds()
     {
-        return $this->hasMany(createbeds::class);
+        return $this->hasMany(beds::class);
     }
 }

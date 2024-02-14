@@ -19,14 +19,23 @@ class DatabaseSeeder extends Seeder
         Storage::disk('public')->put('patient.png', config('app.url').'images/patient.png');
         Storage::disk('public')->put('doctor.png', config('app.url').'images/doctor.png');
 
+        $this->call(RoleSeeder::class);
         User::create([
             'name' =>'tauseed zaman',
             'email' =>'tauseed@test.com',
             'password' =>bcrypt('tauseed'),
-            'role' =>'super admin',
-            'is_super_admin' =>true,
+            'role_id'=>1,
             'created_at' =>now(),
         ]);
+
+        User::create([
+            'name' =>'accountant',
+            'email' =>'accountant@gmail.com',
+            'password' =>bcrypt('password'),
+            'role_id'=>2,
+            'created_at' =>now(),
+        ]);
+
         // User::create([
         //     'name' =>'store employeer',
         //     'email' =>'storeemployeer@test.com',
@@ -51,19 +60,13 @@ class DatabaseSeeder extends Seeder
 
         $this->call([
             employeeSeeder::class,
-            patientSeeder::class,
+            // patientSeeder::class,
             blockSeeder::class,
             departmentSeeder::class,
-            HodSeeder::class,
             doctorSeeder::class,
-            nurseSeeder::class,
-            birthreportSeeder::class,
-            operationreportSeeder::class,
-            SubscriberSeeder::class,
-            ContactSeeder::class,
+            HodSeeder::class,
             roomSeeder::class,
             bedsSeeder::class,
-            billSeeder::class,
             medicineSeeder::class,
             ]);
 

@@ -21,7 +21,7 @@ class CreateEmployeesTable extends Migration
             $table->string("salary")->nullable();
             $table->string("address")->nullable();
             $table->string("qualification")->nullable();
-            $table->enum("position", ["nurse", "doctor", "accountant", "permactist", "receptionist", "cleaner", "security", "other"])->default("other");
+            $table->enum("position", ["nurse", "doctor", "accountant", "pharmacist", "receptionist", "cleaner", "security", "other"])->default("other");
             $table->enum("status", ["active", "inactive"])->default("active");
             $table->string("image")->nullable();
             $table->timestamps();

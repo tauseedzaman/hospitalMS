@@ -5,6 +5,7 @@ namespace Database\Seeders;
 use App\Models\department;
 use Faker\Provider\Lorem;
 use Illuminate\Database\Seeder;
+use Faker\Factory as Faker;
 
 class departmentSeeder extends Seeder
 {
@@ -15,14 +16,20 @@ class departmentSeeder extends Seeder
      */
     public function run()
     {
-        for ($i=0; $i <5 ; $i++) {
-            department::create([
-                'name'          => 'Department '.$i.'',
-                'description'   => "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Porro, provident'.$i.'. ",
-                'photo_path'    => env('APP_URL').'images/department.jpg',
-                'hod_id'    => rand(1,5),
-                'block_id'    => rand(0,4),
-            ]);
+        $faker = Faker::create();
+        department::create([
+            'name' => $faker->name(),
+            'description' => $faker->paragraph(),
+            'photo_path'=>"https://via.placeholder.com/150",
+            'block_id'=>1,
+            'hod_id'=>1,
+        ]);
+        department::create([
+            'name' => $faker->name(),
+            'description' => $faker->paragraph(),
+            'photo_path'=>"https://via.placeholder.com/150",
+            'block_id'=>2,
+            'hod_id'=>2,
+        ]);
     }
-}
 }

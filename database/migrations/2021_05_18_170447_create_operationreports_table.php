@@ -15,10 +15,10 @@ class CreateOperationreportsTable extends Migration
     {
         Schema::create('operationreports', function (Blueprint $table) {
             $table->id();
-            $table->string("patient");
+            $table->foreignId("patient_id")->constrained()->cascadeOnDelete();
             $table->text("description");
-            $table->string("doctor");
-            $table->string("time");
+            $table->foreignId("doctor_id")->constrained()->cascadeOnDelete();
+            $table->enum("status", ["pending", "completed"])->default("pending");
             $table->timestamps();
             $table->softDeletes();
         });

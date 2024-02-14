@@ -4,7 +4,7 @@ namespace Database\Seeders;
 use App\Models\employee;
 
 use Illuminate\Database\Seeder;
-
+use Faker\Factory as Faker;
 class employeeSeeder extends Seeder
 {
     /**
@@ -14,20 +14,24 @@ class employeeSeeder extends Seeder
      */
     public function run()
     {
-        $gender=['Male','Female'];
-        $jobes=['Doctor','Nurse','Store Man'];
-        $salary=[10000,20000,12000,15000,50000];
+        $faker = Faker::create();
 
-        for ($i=0; $i <5 ; $i++) {
-            employee::create([
-                'name'          => 'Employee-'.$i.'',
-                'email'   => 'employee'.$i.'@test.me',
-                'phone'   => '+923'.rand(0,9).rand(0,9).rand(0,9).rand(0,9).rand(0,9).rand(0,9).rand(0,9).rand(0,9).rand(0,9),
-                'address'   => 'G8 street '.$i.'Islamabad pakistan',
-                'gender'  => $gender[rand(0,1)],
-                'job'  => $jobes[rand(0,2)],
-                'salary'  => $salary[rand(0,4)]
-            ]);
-    }
+        $positions = ["nurse", "doctor", "accountant", "pharmacist", "receptionist", "cleaner", "security", "other"];
+
+        foreach ($positions as $position) {
+            for ($i = 0; $i < 10; $i++) {
+                employee::create([
+                    'name' => $faker->name,
+                    'email' => $faker->unique()->safeEmail,
+                    'phone' => $faker->phoneNumber,
+                    'salary' => $faker->randomNumber(5),
+                    'address' => $faker->address,
+                    'qualification' => $faker->text(20),
+                    'position' => $position,
+                    'status' => $faker->randomElement(["active", "inactive"]),
+                    'image' => $faker->imageUrl(),
+                ]);
+            }
+        }
 }
 }

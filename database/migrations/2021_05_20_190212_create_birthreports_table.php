@@ -16,8 +16,8 @@ class CreateBirthreportsTable extends Migration
         Schema::create('birthreports', function (Blueprint $table) {
             $table->id();
             $table->string("description");
-            $table->foreignId("patients_id")->constrained();
-            $table->foreignId("doctors_id")->constrained();
+            $table->foreignId('patient_id')->constrained();
+            $table->foreignId('doctor_id')->constrained();
             $table->string("gender");
             $table->timestamps();
             $table->softDeletes();

@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use App\Models\doctor;
+use App\Models\employee;
 use Illuminate\Database\Seeder;
 
 class doctorSeeder extends Seeder
@@ -14,17 +15,11 @@ class doctorSeeder extends Seeder
      */
     public function run()
     {
-        for ($i=0; $i <20 ; $i++) {
-            doctor::create([
-                'name'          => 'tauseed'.$i.'zamana',
-                'email'         => 'example'.$i.'@test.me',
-                'password'         => bcrypt('thepassword'),
-                'address'       => 'sorana '.$i.' steet',
-                'phone'         => "+92123456789",
-                'department'         => rand(1,5),
-                'specialization'         => "'.$i+1.'MBBS '.$i.'",
-                'photo_path'    => env('APP_URL').'images/'. 'doctor_01.jpg',
-            ]);
-        }
+        Doctor::create([
+            "employee_id"=>employee::where("position","doctor")->first()->id
+        ]);
+        Doctor::create([
+            "employee_id"=>employee::where("position","doctor")->latest()->first()->id
+        ]);
     }
 }
