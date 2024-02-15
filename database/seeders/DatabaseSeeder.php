@@ -59,6 +59,7 @@ class DatabaseSeeder extends Seeder
         // ]);
 
         $this->call([
+            SettingSeeder::class,
             employeeSeeder::class,
             // patientSeeder::class,
             blockSeeder::class,

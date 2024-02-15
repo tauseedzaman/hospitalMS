@@ -2,7 +2,7 @@
 
 namespace App\Http\Livewire\Admins;
 
-use App\Models\general_settings;
+use App\Models\settings as SettingModel;
 use Illuminate\Support\Facades\DB;
 use Livewire\Component;
 use Illuminate\Support\Facades\Storage;
@@ -35,7 +35,7 @@ class Settings extends Component
 
 
 
-    public function add_general_settings()
+    public function add_settings()
     {
 
             $this->validate([
@@ -67,7 +67,7 @@ class Settings extends Component
                   $logo = $this->storeImage($this->logo);
                 }
 
-            general_settings::create([
+                SettingModel::create([
                 'title'          => $this->title,
                 'business_email' => $this->business_email,
                 'favicon_path'   => ($favicon ?? $this->c_favicon),
@@ -107,7 +107,7 @@ class Settings extends Component
 
      public function edit($id)
     {
-        $setting = general_settings::findOrFail($id);
+        $setting = SettingModel::findOrFail($id);
         $this->edit_setting_id = $id;
 
         $this->title = $setting->title;
@@ -134,7 +134,7 @@ class Settings extends Component
                 'working_horse' => 'required',
             ]);
 
-        $setting = general_settings::findOrFail($id);
+        $setting = SettingModel::findOrFail($id);
         $setting->title = $this->title;
         $setting->business_email = $this->business_email;
         $setting->favicon = bcrypt($this->favicon);
@@ -176,15 +176,15 @@ class Settings extends Component
 
     public function render()
     {
-        // $general_settings =  DB::table('general_settings')->orderBy('id', 'DESC')->first();
-        //  $this->c_logo  = $general_settings->logo_path;
-        //  $this->c_favicon  = $general_settings->favicon_path;
-        //  $this->working_horse  = $general_settings->working_horse;
-        //  $this->title  = $general_settings->title;
-        //  $this->description  = $general_settings->description;
-        //  $this->address  = $general_settings->address;
-        //  $this->business_email  = $general_settings->business_email;
-        //  $this->business_phone  = $general_settings->business_phone;
+        // $settings =  DB::table('settings')->orderBy('id', 'DESC')->first();
+        //  $this->c_logo  = $settings->logo_path;
+        //  $this->c_favicon  = $settings->favicon_path;
+        //  $this->working_horse  = $settings->working_horse;
+        //  $this->title  = $settings->title;
+        //  $this->description  = $settings->description;
+        //  $this->address  = $settings->address;
+        //  $this->business_email  = $settings->business_email;
+        //  $this->business_phone  = $settings->business_phone;
 
         return view('livewire.admins.settings')->layout('admins.layouts.app');
     }
