@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 class settings extends Model
-{
+{   
     use HasFactory,SoftDeletes;
     protected $table='settings';
     protected $fillable=[

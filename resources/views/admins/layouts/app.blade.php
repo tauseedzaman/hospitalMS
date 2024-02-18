@@ -31,7 +31,7 @@
             <ul class="mt-5 list-unstyled components text-secondary">
                 {{-- @auth --}}
                 <li>
-                    {{-- <a href="{{ route('admins') }}"><i class="fas fa-home"></i> Dashboard</a> --}}
+                    <a href="{{ route('admin_dashboard') }}"><i class="fas fa-home"></i> Dashboard</a>
                 </li>
                 <li>
                     <a href="{{ route('admin_docters') }}"><i class="fas fa-file-alt"></i>Docters</a>
