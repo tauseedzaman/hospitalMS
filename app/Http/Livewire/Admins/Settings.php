@@ -36,6 +36,7 @@ class Settings extends Component
             }
         }
         session()->flash('message', 'Settings updated successfully.');
+        return redirect()->route("admin_settings");
     }
 
     private function isFileSetting($key)
@@ -47,10 +48,10 @@ class Settings extends Component
     {
         if ($this->{$key}) {
             $this->validate([
-                $key => 'image|mimes:jpg,png,jpeg|max:2048', // Adjust validation rules as needed
+                $key => 'image|mimes:jpg,png,jpeg|max:2048',
             ]);
 
-            $imagePath = $this->{$key}->store('public');
+            $imagePath = $this->{$key}->store('uploads','public');
             $setting->update(['value' => $imagePath]);
         }
     }
