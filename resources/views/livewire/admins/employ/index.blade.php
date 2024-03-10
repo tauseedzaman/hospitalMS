@@ -1,8 +1,13 @@
 <div>
     <div class="content">
         <div class="container">
-            <div class="page-title">
-                <h3 class="text-info">{{ env('APP_NAME') }} Employees</h3>
+            <div class="row page-title row">
+                <div class="col">
+                    <h3 class="text-info">{{ env('APP_NAME') }} Employees</h3>
+                </div>
+                <div class="col-auto">
+                    <button class="btn btn-primary" wire:click="show_create_form">Add Employee</button>
+                </div>
             </div>
             <div>
                 @if (session()->has('message'))

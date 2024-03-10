@@ -19,6 +19,15 @@
         @enderror
 
         <div class="form-group">
+            <label for="image">Image</label>
+            <input type="file" name="image" wire:model.lazy="image" class="form-control" required>
+        </div>
+        @error('image')
+        <span class="text-red-500 text-danger text-xs">{{ $message }}</span>
+        @enderror
+
+
+        <div class="form-group">
             <label for="phone">Phone</label>
             <input type="number" max="1000000000000" name="phone" wire:model.lazy="phone" placeholder="Enter Employee Phone" class="form-control" required cols="30" rows="5"></textarea>
         </div>
@@ -35,33 +44,41 @@
         @enderror
 
         <div class="form-group">
-            <label for="Gender">Gender</label>
-            <select name="Gender" wire:model.lazy="gender" class="form-control" required>
-                <option value="Male">Male</option>
-                <option value="Female">Female</option>
+            <label for="Status">Status</label>
+            <select name="Status" wire:model.lazy="status" class="form-control" required>
+                <option value="active">Active</option>
+                <option value="inactive">Inactive</option>
             </select>
-
-            @error('gender')
+            @error('status')
             <span class="text-red-500 text-danger text-xs">{{ $message }}</span>
             @enderror
         </div>
 
         <div class="form-group">
-            <label for="Job">Job</label>
-            <select name="Job" wire:model.lazy="job" class="form-control" required>
+            <label for="Qualification">Qualification</label>
+            <input type="text" name="Qualification" wire:model.lazy="qualification" placeholder="Enter Employee Qualification" class="form-control" required cols="30" rows="5"></textarea>
+        </div>
+        @error('qualification')
+        <span class="text-red-500 text-danger text-xs">{{ $message }}</span>
+        @enderror
+
+
+        <div class="form-group">
+            <label for="Job">Position</label>
+            <select name="Job" wire:model.lazy="position" class="form-control" required>
                 <option value="">Choose Job</option>
-                <option value="Doctor">Doctor</option>
-                <option value="Nurse">Nurse</option>
-                <option value="...">...</option>
+                @foreach($positions as $position)
+                <option value="{{$position}}">{{ucfirst($position)}}</option>
+                @endforeach
             </select>
-            @error('job')
+            @error('position')
             <span class="text-red-500 text-danger text-xs">{{ $message }}</span>
             @enderror
         </div>
 
 
         <div class="form-group">
-            <label for="Salary">Salary <small class="text-sm text-success">KPR</small></label>
+            <label for="Salary">Salary <small class="text-sm text-success">USD</small></label>
             <input type="number" min="1" name="Salary" wire:model.lazy="salary" placeholder="Enter Employee Salary" class="form-control" required cols="30" rows="5"></textarea>
         </div>
         @error('salary')
@@ -69,7 +86,7 @@
         @enderror
 
         <div class="form-group">
-            <input type="submit" class="btn btn-primary" value="{{ $button_text }}">
+            <input type="submit" class="btn btn-primary" value="create">
         </div>
     </form><br>
 </div>
