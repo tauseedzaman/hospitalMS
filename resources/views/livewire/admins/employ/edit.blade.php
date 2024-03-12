@@ -1,7 +1,7 @@
 <div>
-    <form accept-charset="utf-8" class="shadow rounded p-3" wire:submit.prevent="add_employee()">
+    <form accept-charset="utf-8" class="shadow rounded p-3" wire:submit.prevent="update_employee()">
         <div class="text-capitalize bg-dark p-2 shadow mb-3 text-center text-lg text-light rounded">
-            {{ __('Add New employee') }}</div>
+            {{ __('Edit employee') }}</div>
         <div class="form-group">
             <label for="name">Name</label>
             <input type="text" name="name" id="name" wire:model.lazy="name" placeholder="Enter Employee Name"
@@ -22,13 +22,14 @@
 
         <div class="form-group">
             <label for="image">Image</label>
-            <input type="file" name="image" wire:model.lazy="image" class="form-control" required>
+            <input type="file" name="image" wire:model.lazy="image" class="form-control" >
         </div>
         @error('image')
             <span class="text-red-500 text-danger text-xs">{{ $message }}</span>
         @enderror
-
-
+        @if ($existing_image)
+            <img src="{{ asset('storage/' . $existing_image) }}" width="100" height="100" />
+        @endif
         <div class="form-group">
             <label for="phone">Phone</label>
             <input type="number" max="1000000000000" name="phone" wire:model.lazy="phone"
@@ -96,7 +97,7 @@
 
         <center>
             <div class="form-group">
-                <input type="submit" class="btn btn-primary" value="Create">
+                <input type="submit" class="btn btn-primary" value="Update">
             </div>
         </center>
         <center>

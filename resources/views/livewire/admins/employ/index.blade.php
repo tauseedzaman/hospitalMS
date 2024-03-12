@@ -49,7 +49,7 @@
                                 <td>${{ number_format($employee->salary, 2, '.', ',') }}</td>
                                 <td>{{ $employee->created_at->format("d/m/Y") }}</td>
                                 <td class="text-right">
-                                    <button wire:click="edit({{ $employee->id }})" class="btn btn-outline-info btn-rounded"><i class="fas fa-pen"></i></button>
+                                    <button wire:click="show_edit_form({{ $employee->id }})" class="btn btn-outline-info btn-rounded"><i class="fas fa-pen"></i></button>
                                     <button wire:click="delete({{ $employee->id }})" onclick="return confirm('{{ __('Are You Sure ?') }}')" class="btn btn-outline-danger btn-rounded"><i class="fas fa-trash"></i></button>
                                 </td>
                             </tr>
