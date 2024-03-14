@@ -33,9 +33,9 @@
                 <li>
                     <a href="{{ route('admin_dashboard') }}"><i class="fas fa-home"></i> Dashboard</a>
                 </li>
-                <li>
+                {{-- <li>
                     <a href="{{ route('admin_docters') }}"><i class="fas fa-file-alt"></i>Docters</a>
-                </li>
+                </li> --}}
                 <li>
                     <a href="{{ route('admin_operations_report') }}"><i class="fas fa-file-alt"></i>Operation
                         report</a>
@@ -46,10 +46,10 @@
                 <li>
                     <a href="{{ route('admin_patients') }}"><i class="fas fa-file-alt"></i>Patients</a>
                 </li>
-                <li>
+                {{-- <li>
                     <a href="{{ route('nurses') }}"><i class="fas fa-file-alt"></i>Nurses</a>
-                </li>
-                <li>
+                </li>--}}
+                <li> 
                     <a href="{{ route('employees') }}"><i class="fas fa-file-alt"></i>Employees</a>
                 </li>
                 <li>

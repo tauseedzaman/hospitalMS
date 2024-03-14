@@ -31,7 +31,7 @@ Route::middleware(['auth', 'checksuperadmin'])->group(function () {
         Route::get('/dashboard', App\Http\Livewire\Admins\Dashboard::class)->name('admin_dashboard');
         Route::get('settings', App\Http\Livewire\Admins\Settings::class)->name('admin_settings');
         Route::get('nurses', App\Http\Livewire\Admins\Nurses::class)->name('nurses');
-        Route::get('/docters', App\Http\Livewire\Admins\Docter::class)->name('admin_docters');
+        // Route::get('/docters', App\Http\Livewire\Admins\Docter::class)->name('admin_docters');
         Route::get('/operationsreport', App\Http\Livewire\Admins\Operationreport::class)->name('admin_operations_report');
         Route::get('/patients', App\Http\Livewire\Admins\Patients::class)->name('admin_patients');
         Route::get('/birthsreport', App\Http\Livewire\Admins\Birthreport::class)->name('admin_birth_report');

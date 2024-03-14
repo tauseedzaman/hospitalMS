@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire\Admins;
 
+use App\Models\doctor;
 use App\Models\employee;
 use Livewire\Component;
 use Livewire\WithFileUploads;
@@ -27,10 +28,13 @@ class Employees extends Component
     public $existing_image;
     public $_page;
     public $_edit_employ_id;
+    public $_filter;
+    public $selectedFilter;
 
     public function mount()
     {
         $this->_page = 'index';
+        $this->_filter = 'all';
     }
 
     public function show_create_form()
@@ -76,7 +80,7 @@ class Employees extends Component
 
         $image = $this->image->store('employees', 'public');
 
-        employee::create([
+        $employee = employee::create([
             "name" => $this->name,
             "email" => $this->email,
             "phone" => $this->phone,
@@ -88,11 +92,21 @@ class Employees extends Component
             "image" => $image
         ]);
 
+        if ($this->position == "doctor") {
+            doctor::create([
+                "employee_id" => $employee->id
+            ]);
+        }
+
         $this->reset();
         session()->flash('message', 'Employee added successfully.');
         $this->_page = "index";
     }
 
+    public function set_filter($filter)
+    {
+        $this->_filter = $filter;
+    }
     public function update_employee()
     {
         $this->validate([
@@ -128,6 +142,8 @@ class Employees extends Component
         $employ->save();
         $this->reset();
 
+
+
         session()->flash('message', 'Employee updated successfully.');
         $this->_page = "index";
     }
@@ -153,18 +169,27 @@ class Employees extends Component
 
     public function render()
     {
+        $this->selectedFilter = $this->_filter;
+
+        $positions = ["nurse", "doctor", "accountant", "pharmacist", "receptionist", "cleaner", "security", "other"];
         if ($this->_page == "index") {
+            if ($this->_filter == "all") {
+                $data = employee::latest()->paginate(10);
+            } else {
+                $data = employee::where('position', $this->_filter)->latest()->paginate(10);
+            }
             return view('livewire.admins.employ.index', [
-                'employees' => employee::latest()->paginate(10),
+                'employees' => $data,
+                'positions' => $positions
             ])->layout('admins.layouts.app');
 
         } else if ($this->_page == "create") {
             return view('livewire.admins.employ.create', [
-                'positions' => ["nurse", "doctor", "accountant", "pharmacist", "receptionist", "cleaner", "security", "other"]
+                'positions' => $positions
             ])->layout('admins.layouts.app');
         } else if ($this->_page == "edit") {
             return view('livewire.admins.employ.edit', [
-                'positions' => ["nurse", "doctor", "accountant", "pharmacist", "receptionist", "cleaner", "security", "other"]
+                'positions' => $positions
             ])->layout('admins.layouts.app');
         }
     }

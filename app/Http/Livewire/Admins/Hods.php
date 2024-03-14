@@ -80,7 +80,6 @@ class Hods extends Component
     public function render()
     {
         return view('livewire.admins.hods',[
-            'doctors' => doctor::all(),
             'hods' => hod::latest()->paginate(10),
         ])->layout('admins.layouts.app');
     }
