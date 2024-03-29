@@ -22,4 +22,9 @@ class hod extends Model
     {
         return $this->belongsTo(department::class);
     }
+
+    public function doctor(): BelongsTo
+    {
+        return $this->belongsTo(doctor::class);
+    }
 }

@@ -76,8 +76,7 @@
                                     <td class="text-right">
                                         <button wire:click="show_edit_form({{ $employee->id }})"
                                             class="btn btn-outline-info btn-rounded"><i class="fas fa-pen"></i></button>
-                                        <button wire:click="delete({{ $employee->id }})"
-                                            onclick="return confirm('{{ __('Are You Sure ?') }}')"
+                                        <button wire:click="delete_confirm({{ $employee->id }})"
                                             class="btn btn-outline-danger btn-rounded"><i
                                                 class="fas fa-trash"></i></button>
                                     </td>

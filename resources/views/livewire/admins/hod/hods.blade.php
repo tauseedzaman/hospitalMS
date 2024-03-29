@@ -1,8 +1,13 @@
 <div>
     <div class="content">
         <div class="container">
-            <div class="page-title">
-                <h3 class="text-info">{{ env('APP_NAME') }} Heads Of Departments</h3>
+            <div class="row page-title row">
+                <div class="col">
+                    <h3 class="text-info">{{ env('APP_NAME') }} HOD's</h3>
+                </div>
+                <div class="col-auto">
+                    <button class="btn btn-primary" wire:click="show_create_form">Add New</button>
+                </div>
             </div>
             <div>
                 @if (session()->has('message'))
@@ -17,28 +22,6 @@
             <div class="box box-primary">
                 <div class="box-body">
                     <div class="text-info" wire:loading>Loading..</div>
-                    <form accept-charset="utf-8" class="shadow rounded p-3" wire:submit.prevent="add_hod()">
-                        <div class="text-capitalize bg-dark p-2 shadow mb-3 text-center text-lg text-light rounded">
-                            {{ __('Add New hod') }}</div>
-
-                        <div class="form-group">
-                            <label for="hod">Choose Doctor</label>
-                            <select name="hod" wire:model.lazy="doctor" class="form-control">
-                                @forelse ($doctors as $doctor)
-                                    <option value="{{ $doctor->id }}">{{ $doctor->name }}</option>
-                                @empty
-                                    <option value="" class="text-red">{{ __('No Doctor Found!') }}</option>
-                                @endforelse
-                            </select>
-                            @error('doctor')
-                                <span class="text-red-500 text-danger text-xs">{{ $message }}</span>
-                            @enderror
-                        </div>
-
-                        <div class="form-group">
-                            <input type="submit" class="btn btn-primary" value="{{ $button_text }}">
-                        </div>
-                    </form><br>
                     <hr>
 
                     <div class="text-capitalize bg-dark p-2 shadow mb-3 text-center text-lg text-light rounded">
@@ -56,18 +39,19 @@
                             @forelse ($hods as $hod)
                                 <tr>
                                     <td class="text-center">{{ $hod->id }}</td>
-                                    <td class="text-center">{{ $hod->doctor_id }}</td>
+                                    <td class="text-center">{{ $hod->doctor->employ->name }}</td>
                                     <td class="text-center">{{ $hod->created_at }}</td>
                                     <td class="text-center">
-                                        <button wire:click="edit({{ $hod->id }})"
+                                        <button wire:click="show_edit_form({{ $hod->id }})"
                                             class="btn btn-outline-info btn-rounded"><i class="fas fa-pen"></i></button>
                                         <button wire:click="delete({{ $hod->id }})"
-                                            onclick="return confirm('{{ __('Are You Sure ?') }}')"
                                             class="btn btn-outline-danger btn-rounded"><i
                                                 class="fas fa-trash"></i></button>
+
                                     </td>
                                 </tr>
                             @empty
+                                <td class="text-warning">{{ __('Null') }}</td>
                                 <td class="text-warning">{{ __('Null') }}</td>
                                 <td class="text-warning">{{ __('Null') }}</td>
                                 <td class="text-warning">{{ __('Null') }}</td>
@@ -79,3 +63,5 @@
                 </div>
             </div>
         </div>
+    </div>
+</div>
