@@ -4,6 +4,7 @@ namespace App\Http\Livewire\Admins;
 use App\Models\department;
 use App\Models\hod;
 use App\Models\block;
+use App\Models\doctor;
 use Livewire\Component;
 use Illuminate\Support\Facades\Storage;
 use Intervention\Image\ImageManagerStatic;
@@ -126,11 +127,17 @@ class Departments extends Component
 
     public function render()
     {
-
+        $block_id=[];
+        $departments=department::all();
+        foreach($departments as $deptItem){
+           $block_id[] = $deptItem->block_id;
+        }
+        $doc_name=doctor::with(['employ'])->get();
+        
         return view('livewire.admins.departments',[
-            'departments' => department::latest()->paginate(10),
-            'hods' => hod::all(),
-            'blocks' => block::all(),
+            'departments' => department::with(['hod'])->paginate(10),
+            'hods' => $doc_name,
+            'blocks' => block::whereIn('id',$block_id)->get(),
         ])->layout('admins.layouts.app');
     }
 }

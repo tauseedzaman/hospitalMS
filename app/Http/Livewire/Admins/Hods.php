@@ -80,6 +80,7 @@ class Hods extends Component
     {
         if ($this->_page == "index") {
             return view('livewire.admins.hod.hods', [
+                'doctors' => doctor::with(['employ'])->get(),
                 'hods' => hod::latest()->paginate(10),
             ])->layout('admins.layouts.app');
         } else if ($this->_page == "create") {

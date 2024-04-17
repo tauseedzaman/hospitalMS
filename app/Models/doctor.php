@@ -23,4 +23,6 @@ class doctor extends Model
     {
         return $this->belongsTo(employee::class,'employee_id','id');
     }
+
+   
 }
