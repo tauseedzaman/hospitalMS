@@ -30,7 +30,7 @@
                         <thead>
                             <tr>
                                 <th class="text-center">ID</th>
-                                <th class="text-center">Doctor id</th>
+                                <th class="text-center">Doctor Name</th>
                                 <th class="text-center">Dated</th>
                                 <th class="text-center">Actions</th>
                             </tr>
@@ -39,7 +39,12 @@
                             @forelse ($hods as $hod)
                                 <tr>
                                     <td class="text-center">{{ $hod->id }}</td>
-                                    <td class="text-center">{{ $hod->doctor->employ->name }}</td>
+                                    <td class="text-center"> 
+                                        @foreach($doctors as $doc)
+                                          @if($doc->id==$hod->doctor_id)
+                                        {{ $doc['employ']->name }}
+                                        @endif
+                                        @endforeach</td>
                                     <td class="text-center">{{ $hod->created_at }}</td>
                                     <td class="text-center">
                                         <button wire:click="show_edit_form({{ $hod->id }})"

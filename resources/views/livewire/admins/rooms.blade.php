@@ -42,6 +42,7 @@
                             @error('roomtype')
                                 <span class="text-red-500 text-danger text-xs">{{ $message }}</span>
                             @enderror
+                            
                         </div>
                         <div class="form-group">
                             <label for="available">Available</label>
@@ -64,7 +65,7 @@
                                 <th>Room No</th>
                                 <th>Room Type</th>
                                 <th>Department</th>
-                                <th>Avaialble</th>
+                                <th>Available</th>
                                 <th>Dated</th>
                                 <th>Actions</th>
                             </tr>
@@ -73,9 +74,9 @@
                             @forelse ($rooms as $room)
                                 <tr>
                                     <td>{{ $room->id }}</td>
-                                    <td>{{ $room->roomtype }}</td>
+                                    <td>{{ $room->type }}</td>
                                     <td>{{ $room->department->name }}</td>
-                                    <td>{{ $room->available }}</td>
+                                    <td>@if($room->status=='available')Yes @endif</td>
                                     <td>{{ $room->created_at }}</td>
                                     <td class="text-right">
                                         <button wire:click="edit({{ $room->id }})"
