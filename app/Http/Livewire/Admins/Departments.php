@@ -126,11 +126,17 @@ class Departments extends Component
 
     public function render()
     {
-
+        $block_id=[];
+        $departments=department::all();
+        foreach($departments as $deptItem){
+           $block_id[] = $deptItem->block_id;
+        }
+        $doc_name=doctor::with(['docname'])->get();
+        
         return view('livewire.admins.departments',[
             'departments' => department::latest()->paginate(10),
-            'hods' => hod::all(),
-            'blocks' => block::all(),
+            'hods' => $doc_name,
+            'blocks' => block::whereIn('id',$block_id)->get(),
         ])->layout('admins.layouts.app');
     }
 }
