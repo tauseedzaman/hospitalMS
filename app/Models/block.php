@@ -11,7 +11,7 @@ class block extends Model
     use HasFactory,SoftDeletes;
 
     protected $fillable=[
-        'blockfloor',
+        'blockname',
         'blockcode'
     ];
         /**

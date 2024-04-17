@@ -2,94 +2,100 @@
 
 namespace App\Http\Livewire\Admins;
 
+use App\Models\doctor;
 use Livewire\Component;
 use App\Models\block;
 use Livewire\WithPagination;
 
 class Blocks extends Component
 {
+
     use WithPagination;
+
 
     protected $paginationTheme = 'bootstrap';
 
-    public $blockfloor;
+    public $blockname;
     public $blockcode;
 
-    public $edit_block_id;
-    public $button_text = "Add New Block";
+    public $edit_item_id;
+    public $button_text = "Add New";
 
-    public function add_block()
+    public $_page;
+    public function mount()
     {
-        if ($this->edit_block_id) {
-
-            $this->update($this->edit_block_id);
-
-        }else{
-            $this->validate([
-                'blockfloor' => 'required|numeric',
-                'blockcode' => 'required|numeric',
-                ]);
-
-            block::create([
-                'blockfloor'         => $this->blockfloor,
-                'blockcode'         => $this->blockcode,
-            ]);
-
-            $this->blockcode="";
-            $this->blockfloor="";
-
-            session()->flash('message', 'Block Created successfully.');
-        }
-
+        $this->_page = 'index';
     }
 
-
-     public function edit($id)
+    public function show_create_form()
     {
-        $block = block::findOrFail($id);
-        $this->edit_block_id = $id;
-        $this->blockcode = $block->blockcode;
-        $this->blockfloor = $block->blockfloor;
-
-        $this->button_text="Update Block";
+        $this->_page = "create";
     }
 
-    public function update($id)
+    public function show_edit_form($id)
+    {
+        $this->_page = "edit";
+        $this->edit_item_id = $id;
+        $item = block::find($id);
+        $this->blockname = $item->blockname;
+        $this->blockcode = $item->blockcode;
+    }
+
+    public function show_index()
+    {
+        $this->_page = "index";
+    }
+
+    public function add_item()
     {
         $this->validate([
-            'blockcode' => 'required|numeric',
-            'blockfloor' => 'required|numeric',
-            ]);
+            'blockname' => "required|string",
+            'blockcode' => "required|string",
+        ]);
+        block::create([
+            'blockname' => $this->blockname,
+            'blockcode' => $this->blockcode,
+        ]);
+        $this->blockname = "";
+        $this->blockcode = "";
+        session()->flash('message', 'Block Added successfully.');
+        $this->_page = "index";
+    }
 
-        $block = block::findOrFail($id);
-        $block->blockfloor = $this->blockfloor;
-        $block->blockcode = $this->blockcode;
-
-        $block->save();
-
-        $this->blockcode="";
-        $this->blockfloor="";
-
-        $this->edit_block_id="";
-
-        session()->flash('message', 'Block Updated Successfully.');
-
-        $this->button_text = "Add New Block";
-
-}
-
-     public function delete($id)
+    public function update()
     {
-        block::findOrFail($id)->delete();
-        session()->flash('message', 'Block Deleted Successfully.');
+        $this->validate([
+            'blockname' => "required|string",
+            'blockcode' => "required|string",
+        ]);
 
-        $this->blockcode="";
-        $this->blockfloor="";
-}
+        $item = block::findOrFail($this->edit_item_id);
+        $item->blockname = $this->blockname;
+        $item->blockcode = $this->blockcode;
+        $item->save();
+        $this->blockname = "";
+        $this->blockcode = "";
+        $this->edit_item_id = "";
+        $this->_page = "index";
+        session()->flash('message', 'Block Updated Successfully.');
+    }
+
+    public function delete($IdToDelete)
+    {
+        block::findOrFail($IdToDelete)->delete();
+        session()->flash('message', 'Block Deleted Successfully.');
+        $this->doctor = "";
+    }
     public function render()
     {
-        return view('livewire.admins.blocks',[
-            'blocks' =>block::latest()->paginate(10)
-        ])->layout('admins.layouts.app');
+        if ($this->_page == "index") {
+            return view('livewire.admins.block.index', [
+                'blocks' => block::latest()->paginate(10),
+            ])->layout('admins.layouts.app');
+        } else if ($this->_page == "create") {
+            return view('livewire.admins.block.create');
+        } else if ($this->_page == "edit") {
+            return view('livewire.admins.block.edit');
+        }
     }
 }

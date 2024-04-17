@@ -15,7 +15,7 @@ class CreateBlocksTable extends Migration
     {
         Schema::create('blocks', function (Blueprint $table) {
             $table->id();
-            $table->unsignedInteger('blockfloor');
+            $table->string('blockname');
             $table->unsignedInteger('blockcode');
             $table->timestamps();
             $table->softDeletes();
