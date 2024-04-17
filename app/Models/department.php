@@ -39,9 +39,12 @@ class department extends Model
      *
      * @return \Illuminate\Database\Eloquent\Relations\HasOne
      */
-    public function hod(): HasOne
+    // public function hod(): HasOne
+    // {
+    //     return $this->hasOne(hod::class);
+    // }
+    public function hod(): BelongsTo
     {
-        return $this->hasOne(hod::class);
+        return $this->BelongsTo(hod::class);
     }
-
 }

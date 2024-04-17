@@ -91,8 +91,8 @@
                             <th>Name</th>
                             <th>Description</th>
                             <th>Photo</th>
-                            <th>HOD ID</th>
-                            <th>BlockID</th>
+                            <th>HOD Name</th>
+                            <th>Block Code</th>
                             <th>Created at</th>
                             <th>Actions</th>
                         </tr>
@@ -104,7 +104,7 @@
                             <td><img width="50px" height="50px" src="{{  $department->photo_path }}" alt=""></td>
                             <td> @foreach($hods as $doc)
                              @if($doc->id == $department['hod']->doctor_id)
-                              {{$doc['docname']->name}}
+                              {{$doc['employ']->name}}
                              @endif
                             @endforeach </td>
                             <td> @foreach($blocks as $item_code)
