@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Livewire\Admins;
+
 use App\Models\department;
 use App\Models\hod;
 use App\Models\block;
@@ -25,35 +26,56 @@ class Departments extends Component
     public $edit_photo;
     public $edit_department_id;
     public $button_text = "Add New Department";
+    public $_page;
+    public function mount()
+    {
+        $this->_page = 'index';
+    }
 
+
+    public function show_create_form()
+    {
+        $this->_page = "create";
+    }
+
+    public function show_edit_form($id)
+    {
+        $this->_page = "edit";
+        $this->edit_department_id = $id;
+        $item = department::findOrFail($id);
+        $this->name = $item->name;
+        $this->block = $item->block_id;
+        $this->descriptions = $item->description;
+        $this->head = $item->hod_id;
+        $this->photo_path = $item->photo;
+    }
 
     public function add_department()
     {
-        if ($this->edit_photo) {
-
+        if ($this->edit_department_id) {
             $this->update($this->edit_department_id);
-
-        }else{
+        } else {
             $this->validate([
                 'name' => 'required|max:50',
                 'descriptions' => 'required|max:255',
                 'head' => 'required|numeric|unique:departments,hod_id,except,id',
                 'block' => 'required|numeric',
                 'photo' => 'required|image|max:3072', //3MB
-                ]);
+            ]);
             department::create([
-                'name'        => $this->name,
-                'block_id'        => $this->block,
+                'name' => $this->name,
+                'block_id' => $this->block,
                 'description' => $this->descriptions,
                 'hod_id' => $this->head,
-                'photo_path'  => $this->storeImage(),
+                'photo_path' => $this->storeImage(),
             ]);
-            $this->name="";
-            $this->descriptions="";
-            $this->photo="";
-            $this->head="";
-            $this->block="";
+            $this->name = "";
+            $this->descriptions = "";
+            $this->photo = "";
+            $this->head = "";
+            $this->block = "";
             session()->flash('message', 'Department Created successfully.');
+            $this->_page = 'index';
         }
 
     }
@@ -63,14 +85,14 @@ class Departments extends Component
         if (!$this->photo) {
             return null;
         }
-        $imag   = ImageManagerStatic::make($this->photo)->encode('jpg');
+        $imag = ImageManagerStatic::make($this->photo)->encode('jpg');
         $img = $imag->resize(320, 240);
-        $name  = Str::random() . '.jpg';
+        $name = Str::random() . '.jpg';
         Storage::disk('public')->put($name, $img);
-        return env('APP_URL').'storage/'.$name;
+        return env('APP_URL') . 'storage/' . $name;
     }
 
-     public function edit($id)
+    public function edit($id)
     {
         $department = department::findOrFail($id);
         $this->edit_department_id = $id;
@@ -79,7 +101,7 @@ class Departments extends Component
         $this->descriptions = $department->description;
         $this->head = $department->hod_id;
         $this->edit_photo = $department->photo_path;
-        $this->button_text="Update Department";
+        $this->_page = 'edit';
     }
     public function update($id)
     {
@@ -88,7 +110,7 @@ class Departments extends Component
             'descriptions' => 'required|max:255',
             'head' => 'required',
             'block' => 'required',
-            ]);
+        ]);
 
         $department = department::findOrFail($id);
         $department->name = $this->name;
@@ -101,21 +123,23 @@ class Departments extends Component
             ]);
             Storage::disk('public')->delete($department->photo_path);
             $department->photo_path = $this->storeImage();
-
         }
         $department->save();
-        $this->name="";
-        $this->descriptions="";
-        $this->edit_photo="";
-        $this->head="";
-        $this->photo="";
-        $this->block="";
+        $this->name = "";
+        $this->descriptions = "";
+        $this->edit_photo = "";
+        $this->edit_department_id = "";
+        $this->head = "";
+        $this->photo = "";
+        $this->block = "";
         session()->flash('message', 'Department Updated Successfully.');
+        $this->_page = 'index';
         $this->button_text = "Add New Department";
 
-}
 
-     public function delete($id)
+    }
+
+    public function delete($id)
     {
         $department = department::find($id);
         Storage::disk('public')->delete($department->photo_path);
@@ -126,11 +150,23 @@ class Departments extends Component
 
     public function render()
     {
-
-        return view('livewire.admins.departments',[
-            'departments' => department::latest()->paginate(10),
-            'hods' => hod::all(),
-            'blocks' => block::all(),
-        ])->layout('admins.layouts.app');
+        if ($this->_page == "index") {
+            return view('livewire.admins.department.index', [
+                'departments' => department::latest()->paginate(10),
+            ])->layout('admins.layouts.app');
+        } elseif ($this->_page == "create") {
+            $ids = department::pluck('hod_id')->toArray();
+            return view('livewire.admins.department.create', [
+                'hods' => hod::whereNotIn('id', $ids)->get(),
+                'blocks' => block::all(),
+            ])->layout('admins.layouts.app');
+        } elseif ($this->_page == "edit") {
+            $ids = department::pluck('hod_id')->toArray();
+            return view('livewire.admins.department.edit', [
+                'department' => department::findOrFail($this->edit_department_id),
+                'hods' => hod::whereNotIn('id', $ids)->get(),
+                'blocks' => block::all(),
+            ])->layout('admins.layouts.app');
+        }
     }
 }
