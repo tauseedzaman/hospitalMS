@@ -11,8 +11,8 @@ class rooms extends Model
     use HasFactory,SoftDeletes;
     protected $fillable=[
         'department_id',
-        'roomtype',
-        'available'
+        'type',
+        'status'
 ];
 
     public function department()
