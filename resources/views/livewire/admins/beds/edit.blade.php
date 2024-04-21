@@ -19,7 +19,7 @@
                     <div class="text-info" wire:loading>Loading..</div>
                     <form accept-charset="utf-8" class="shadow rounded p-3" wire:submit.prevent="add_bed()">
                         <div class="text-capitalize bg-dark p-2 shadow mb-3 text-center text-lg text-light rounded">
-                            {{ __('Add New Bed') }}</div>
+                            {{ __('Update Bed') }}</div>
 
                         <div class="form-group">
                             <label for="Room">Room</label>
@@ -53,7 +53,7 @@
 
                         <div class="form-group">
                             <label for="a_time">Alloted Time</label>
-                            <input type="datetime-local" name="a_time" wire:model.lazy="alloted_time"
+                            <input type="datetime-local" name="alloted_time" wire:model.lazy="alloted_time"
                                 class="form-control">
                             @error('alloted_time')
                                 <span class="text-red-500 text-danger text-xs">{{ $message }}</span>
@@ -61,8 +61,8 @@
                         </div>
 
                         <div class="form-group">
-                            <label for="d_time">Discharged Time</label>
-                            <input type="datetime-local" name="d_time" wire:model.lazy="discharge_time"
+                            <label for="a_time">DisCharge Time</label>
+                            <input type="datetime-local" name="discharge_time" wire:model.lazy="discharge_time"
                                 class="form-control">
                             @error('discharge_time')
                                 <span class="text-red-500 text-danger text-xs">{{ $message }}</span>
@@ -70,53 +70,11 @@
                         </div>
 
                         <div class="form-group">
-                            <input type="submit" class="btn btn-primary" value="{{ $button_text }}">
+                            <input type="submit" class="btn btn-primary" value="Save">
                         </div>
                     </form><br>
-                    <hr>
-
-                    <div class="text-capitalize bg-dark p-2 shadow mb-3 text-center text-lg text-light rounded">
-                        {{ __('All  beds') }}</div>
-                    <table class="table table-hover" style="" id="">
-                        <thead>
-                            <tr>
-                                <th class="text-center">Bed ID</th>
-                                <th class="text-center">Room id</th>
-                                <th class="text-center">Patient id</th>
-                                <th class="text-center">Alloted Time</th>
-                                <th class="text-center">Descharge Time</th>
-                                <th class="text-center">Actions</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @forelse ($beds as $bed)
-                                <tr>
-                                    <td class="text-center">{{ $bed->id }}</td>
-                                    <td class="text-center">{{ $bed->room_id }}</td>
-                                    <td class="text-center">{{ $bed->patient_id ?: 'Null' }}</td>
-                                    <td class="text-center">{{ $bed->alloted_time ?: 'Null' }}</td>
-                                    <td class="text-center">{{ $bed->discharge_time ?: 'Null' }}</td>
-                                    <td class="text-center">
-                                        <button wire:click="edit({{ $bed->id }})"
-                                            class="btn btn-outline-info btn-rounded"><i class="fas fa-pen"></i></button>
-                                        <button wire:click="delete({{ $bed->id }})"
-                                            onclick="return confirm('{{ __('Are You Sure ?') }}')"
-                                            class="btn btn-outline-danger btn-rounded"><i
-                                                class="fas fa-trash"></i></button>
-                                    </td>
-                                </tr>
-                            @empty
-                                <td class="text-warning">{{ __('Null') }}</td>
-                                <td class="text-warning">{{ __('Null') }}</td>
-                                <td class="text-warning">{{ __('Null') }}</td>
-                                <td class="text-warning">{{ __('Null') }}</td>
-                                <td class="text-warning">{{ __('Null') }}</td>
-                                <td class="text-warning">{{ __('Null') }}</td>
-                                </tr>
-                            @endforelse
-                        </tbody>
-                    </table>
-                    {{ $beds->links() }}
                 </div>
             </div>
         </div>
+    </div>
+</div>

@@ -23,7 +23,7 @@ class CreatePatientsTable extends Migration
             $table->string("age")->nullable();
             $table->string('bloodgroup')->nullable();
             $table->string("photo_path")->nullable();
-            $table->enum("status", ["admitted", "discharged","pending"])->default("pending"); 
+            $table->enum("status", ["admitted", "discharged", "pending"])->default("pending");
             $table->string("image")->nullable();
             $table->string("description")->nullable();
             $table->string("disease")->nullable();

@@ -86,33 +86,11 @@
                                 <span class="text-red-500 text-danger text-xs">{{ $message }}</span>
                             @enderror
                         </div>
-                        <div class="form-group ">
-                            <label class="form-check-label mr-3">
-                                Patient Type
-                            </label><br>
-                            <div class="form-inline">
-                                <div class="form-check mx-3">
-                                    <input class="form-check-input" wire:model="indoor" type="radio" name="rad"
-                                        id="rad1" value="indoor">
-                                    <label class="form-check-label" for="rad1">
-                                        Indoor
-                                    </label>
-                                </div>
-                                <div class="form-check mx-3">
-                                    <input class="form-check-input" wire:model="outdoor" type="radio"
-                                        name="rad" id="rad2" value="outdoor">
-                                    <label class="form-check-label" for="rad2">
-                                        Outdoor
-                                    </label>
-                                </div>
-                            </div>
-                        </div>
                         {{-- @if ($indoor) --}}
                         {{-- <h1>out door is on</h1> --}}
                         {{-- @endif --}}
                         {{-- @if ($indoor) --}}
-                        <div class="form-group" x-data="{ isUploading: false, progress: 0 }"
-                            x-on:livewire-upload-start="isUploading = true"
+                        <div class="form-group" x-data="{ isUploading: false, progress: 0 }" x-on:livewire-upload-start="isUploading = true"
                             x-on:livewire-upload-finish="isUploading = false"
                             x-on:livewire-upload-error="isUploading = false"
                             x-on:livewire-upload-progress="progress = $event.detail.progress">
@@ -153,61 +131,6 @@
                             <input type="submit" class="btn btn-primary" value="{{ $button_text }}">
                         </div>
                     </form><br>
-                    <hr>
-                    <div class="text-capitalize bg-dark p-2 shadow mb-3 text-center text-lg text-light rounded">
-                        {{ __('All  patients') }}</div>
-                    <table width="100%" class="table table-hover" id="">
-                        <thead>
-                            <tr>
-                                <th>Name</th>
-                                <th>Email</th>
-                                <th>Age</th>
-                                <th>Gender</th>
-                                <th>Address</th>
-                                <th>BloodGroup</th>
-                                <th>Photo</th>
-                                <th>Dated</th>
-                                <th>Actions</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @forelse ($patients as $patient)
-                                <tr>
-                                    <td>{{ $patient->name }}</td>
-                                    <td>{{ $patient->email }}</td>
-                                    <td>{{ $patient->age ?: 'Null' }}</td>
-                                    <td>{{ $patient->gender ?: 'Null' }}</td>
-                                    <td>{{ $patient->address ?: 'Null' }}</td>
-                                    <td>{{ $patient->bloodgroup ?: 'Null' }}</td>
-                                    <td><img width="100%" height="70px"
-                                            src="{{ env('APP_URL') . 'storage/' . $patient->photo_path ?: config('app.url') . 'images/patient.png' }}"
-                                            alt="No Image"></td>
-                                    <td>{{ $patient->created_at }}</td>
-                                    <td class="text-right">
-                                        <button wire:click="edit({{ $patient->id }})"
-                                            class="btn btn-outline-info btn-rounded"><i
-                                                class="fas fa-pen"></i></button>
-                                        <button wire:click="delete({{ $patient->id }})"
-                                            onclick="return confirm('{{ __('Are You Sure ?') }}')"
-                                            class="btn btn-outline-danger btn-rounded"><i
-                                                class="fas fa-trash"></i></button>
-                                    </td>
-                                </tr>
-                            @empty
-                                <td class="text-warning">{{ __('Null') }}</td>
-                                <td class="text-warning">{{ __('Null') }}</td>
-                                <td class="text-warning">{{ __('Null') }}</td>
-                                <td class="text-warning">{{ __('Null') }}</td>
-                                <td class="text-warning">{{ __('Null') }}</td>
-                                <td class="text-warning">{{ __('Null') }}</td>
-                                <td class="text-warning">{{ __('Null') }}</td>
-                                <td class="text-warning">{{ __('Null') }}</td>
-                                <td class="text-warning">{{ __('Null') }}</td>
-                                </tr>
-                            @endforelse
-                        </tbody>
-                    </table>
-                    {{ $patients->links() }}
                 </div>
             </div>
         </div>
