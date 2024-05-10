@@ -20,11 +20,21 @@ class Operationreport extends Component
     public $patient;
     public $details;
     public $doctor;
-    public $time;
+    public $status;
 
     public $edit_operation_report_id;
     public $button_text = "Add New Operation Report";
+    public $_page;
+    public function mount()
+    {
+        $this->_page = 'index';
+    }
 
+
+    public function show_create_form()
+    {
+        $this->_page = "create";
+    }
 
 
     public function add_operationreport()
@@ -33,91 +43,101 @@ class Operationreport extends Component
 
             $this->update($this->edit_operation_report_id);
 
-        }else{
+        } else {
             $this->validate([
                 'patient' => 'required',
                 'doctor' => 'required',
                 'details' => 'required',
-                'time' => 'required',
-                ]);
-
-            ModelsOperationreport::create([
-                'patient'          => $this->patient,
-                'description'         => $this->details,
-                'doctor'         => $this->doctor,
-                'time'         => $this->doctor,
+                'status' => 'required',
             ]);
 
-            $this->patient="";
-            $this->details="";
-            $this->doctor="";
-            $this->time="";
+            ModelsOperationreport::create([
+                'patient_id' => $this->patient,
+                'description' => $this->details,
+                'doctor_id' => $this->doctor,
+                'status' => $this->doctor,
+            ]);
 
+            $this->patient = "";
+            $this->details = "";
+            $this->doctor = "";
+            $this->status = "";
+            $this->_page = 'index';
             session()->flash('message', 'Operation Report Created successfully.');
         }
 
     }
 
 
-     public function edit($id)
+    public function edit($id)
     {
         $Operationreport = ModelsOperationreport::findOrFail($id);
         $this->edit_operation_report_id = $id;
 
-        $this->patient = $Operationreport->patient;
+        $this->patient = $Operationreport->patient_id;
         $this->details = $Operationreport->description;
-        $this->doctor = $Operationreport->doctor;
-        $this->time = $Operationreport->time;
-
-        $this->button_text="Update Operation Report";
+        $this->doctor = $Operationreport->doctor_id;
+        $this->status = $Operationreport->status;
+        $this->_page = 'edit';
     }
 
     public function update($id)
     {
         $this->validate([
-                'patient' => 'required',
-                'details' => 'required',
-                'doctor' => 'required',
-                'time' => 'required',
-            ]);
+            'patient' => 'required',
+            'details' => 'required',
+            'doctor' => 'required',
+            'status' => 'required',
+        ]);
 
         $Operationreport = ModelsOperationreport::findOrFail($id);
-        $Operationreport->patient = $this->patient;
+        $Operationreport->patient_id = $this->patient;
         $Operationreport->description = $this->details;
-        $Operationreport->doctor = $this->doctor;
-        $Operationreport->time = $this->time;
+        $Operationreport->doctor_id = $this->doctor;
+        $Operationreport->status = $this->status;
 
         $Operationreport->save();
 
-        $this->patient="";
-        $this->details="";
-        $this->doctor="";
-        $this->time="";
-        $this->edit_operation_report_id="";
+        $this->patient = "";
+        $this->details = "";
+        $this->doctor = "";
+        $this->status = "";
+        $this->edit_operation_report_id = "";
 
         session()->flash('message', 'Operation Report Updated Successfully.');
+        $this->_page = 'index';
+    }
 
-        $this->button_text = "Add New Operation Report";
-
-}
-
-     public function delete($id)
+    public function delete($id)
     {
         ModelsOperationreport::findOrFail($id)->delete();
-        session()->flash('message', 'Operationreport Deleted Successfully.');
+        session()->flash('message', 'Operation report Deleted Successfully.');
 
-        $this->patient="";
-        $this->details="";
-        $this->doctor="";
-        $this->time="";
-}
+        $this->patient = "";
+        $this->details = "";
+        $this->doctor = "";
+        $this->status = "";
+    }
 
     public function render()
     {
-        return view('livewire.admins.operationreport',[
-            'OperationReports' => ModelsOperationreport::latest()->paginate(10),
-            'doctors' => doctor::all(),
-            'patients' => patient::all(),
-        ])->layout('admins.layouts.app');
+        if ($this->_page == "index") {
+            return view('livewire.admins.operationreport.index', [
+                'reports' => ModelsOperationreport::latest()->paginate(10),
+            ])->layout('admins.layouts.app');
+        } elseif ($this->_page == "create") {
+            return view('livewire.admins.operationreport.create', [
+                'doctors' => doctor::all(),
+                'patients' => patient::all(),
+            ])->layout('admins.layouts.app');
+        } elseif ($this->_page == "edit") {
+            return view('livewire.admins.operationreport.edit', [
+                'report' => ModelsOperationreport::findOrFail($this->edit_operation_report_id),
+                'doctors' => doctor::all(),
+                'patients' => patient::all(),
+            ])->layout('admins.layouts.app');
+        }
+
     }
+
 }
