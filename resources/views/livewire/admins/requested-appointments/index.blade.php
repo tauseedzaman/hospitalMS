@@ -1,8 +1,13 @@
 <div>
     <div class="content">
         <div class="container">
-            <div class="page-title">
-                <h3 class="text-info">{{ env('APP_NAME') }} Requested Appointments</h3>
+            <div class="row page-title row">
+                <div class="col">
+                    <h3 class="text-info">{{ env('APP_NAME') }} Requested Appointments</h3>
+                </div>
+                <div class="col-auto">
+                    <button class="btn btn-primary" wire:click="show_create_form">Add New</button>
+                </div>
             </div>
             <div>
                 @if (session()->has('message'))
@@ -20,7 +25,7 @@
                     <br>
                     <hr>
                     <div class="text-capitalize bg-dark p-2 shadow mb-3 text-center text-lg text-light rounded">
-                        {{ __('All  Requtested Appointments') }}</div>
+                        {{ __('All Requtested Appointments') }}</div>
                     <table width="100%" class="table table-hover" id="">
                         <thead>
                             <tr>
@@ -35,20 +40,28 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @forelse ($all_requested_appointment as $request)
+                            @forelse ($appointments as $request)
                                 <tr>
                                     <td>{{ $request->name }}</td>
                                     <td>{{ $request->email }}</td>
                                     <td>{{ $request->phone }}</td>
-                                    <td>{{ $request->doctor }}</td>
+                                    <td>{{ $request->doctor->employ->name }}</td>
                                     <td>{{ $request->address }}</td>
                                     <td>{{ $request->message }}</td>
                                     <td>{{ $request->stime }}</td>
                                     <td class="text-right">
 
-                                        <button wire:click="add_patient({{ $request->id }})" title="add as a patient"
-                                            class="btn btn-outline-info btn-rounded"><i
-                                                class="fas fa-plus"></i></button>
+                                        @if (
+                                            !App\Models\patient::where([
+                                                'name' => $request->name,
+                                                'email' => $request->email,
+                                                'phone' => $request->phone,
+                                                'address' => $request->address,
+                                            ])->exists())
+                                            <button wire:click="add_patient({{ $request->id }})"
+                                                title="add as a patient" class="btn btn-outline-info btn-rounded"><i
+                                                    class="fas fa-plus"></i></button>
+                                        @endif
 
                                         <button title="delete request" onclick="return confirm('Are You Sure ?')"
                                             wire:click="delete({{ $request->id }})"
@@ -69,7 +82,7 @@
                             @endforelse
                         </tbody>
                     </table>
-                    {{ $all_requested_appointment->links() }}
+                    {{ $appointments->links() }}
                 </div>
             </div>
         </div>

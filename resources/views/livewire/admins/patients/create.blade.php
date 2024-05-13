@@ -86,10 +86,6 @@
                                 <span class="text-red-500 text-danger text-xs">{{ $message }}</span>
                             @enderror
                         </div>
-                        {{-- @if ($indoor) --}}
-                        {{-- <h1>out door is on</h1> --}}
-                        {{-- @endif --}}
-                        {{-- @if ($indoor) --}}
                         <div class="form-group" x-data="{ isUploading: false, progress: 0 }" x-on:livewire-upload-start="isUploading = true"
                             x-on:livewire-upload-finish="isUploading = false"
                             x-on:livewire-upload-error="isUploading = false"
@@ -122,10 +118,7 @@
                                 <img width="20%" height="20%"
                                     src="{{ env('APP_URL') . 'storage/' . $edit_photo }}">
                             @endif
-
-
                         </div>
-                        {{-- @endif --}}
 
                         <div class="form-group">
                             <input type="submit" class="btn btn-primary" value="{{ $button_text }}">
