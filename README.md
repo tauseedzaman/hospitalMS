@@ -16,7 +16,7 @@
 
 ## Installation
 
-Follow these instructions to set up and run the project locally on your machine.
+Follow these instructions to set up and run the project locally on your Machine.
 
 ### Prerequisites
 
