@@ -16,10 +16,10 @@ class checksuperadmin
      */
     public function handle(Request $request, Closure $next)
     {
-        // if (Auth::user()->is_super_admin == true) {
+        $user = Auth::user();
+        if ($user && optional($user->role)->name === "admin") {
             return $next($request);
-        // }else{
-        //     return abort('404');
-        // }
+        }
+        abort(403);
     }
 }
